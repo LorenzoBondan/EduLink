@@ -68,8 +68,11 @@ public class User implements UserDetails, Serializable{
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "students")
 	private Set<Subject> subjectsSubscribed = new HashSet<>();
 	
-	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
-	private List<Test> tests = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_user_tests",
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "test_id"))
+	private Set<Test> tests = new HashSet<>();
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private List<Subject> subjectsTaught = new ArrayList<>();
@@ -150,7 +153,7 @@ public class User implements UserDetails, Serializable{
 		return subjectsSubscribed;
 	}
 
-	public List<Test> getTests() {
+	public Set<Test> getTests() {
 		return tests;
 	}
 

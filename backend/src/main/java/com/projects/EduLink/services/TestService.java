@@ -94,7 +94,11 @@ public class TestService {
 		entity.setName(dto.getName());
 		entity.setDate(dto.getDate());
 		entity.setScore(dto.getScore());
-		entity.setStudent(userRepository.getOne(dto.getStudentId()));
 		entity.setSubject(subjectRepository.getOne(dto.getSubjectId()));
+		
+		for(Long studentId : dto.getStudentsId()) {
+			User student = userRepository.getOne(studentId);
+			entity.getStudents().add(student);
+		}
 	}
 }

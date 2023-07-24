@@ -2,6 +2,8 @@ package com.projects.EduLink.dto;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.projects.EduLink.entities.Test;
@@ -14,8 +16,9 @@ public class TestDTO implements Serializable {
 	private String name;
 	private Double score;
 	private LocalDateTime date;
-	private Long studentId;
 	private Long subjectId;
+	
+	private List<Long> studentsId = new ArrayList<>();
 	
 	public TestDTO() {}
 	
@@ -24,17 +27,17 @@ public class TestDTO implements Serializable {
 		this.name = entity.getName();
 		this.score = entity.getScore();
 		this.date = entity.getDate();
-		this.studentId = entity.getStudent().getId();
 		this.subjectId = entity.getSubject().getId();
+		
+		entity.getStudents().forEach(student -> this.studentsId.add(student.getId()));
 	}
 
-	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long studentId, Long subjectId) {
+	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long subjectId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.score = score;
 		this.date = date;
-		this.studentId = studentId;
 		this.subjectId = subjectId;
 	}
 
@@ -70,20 +73,16 @@ public class TestDTO implements Serializable {
 		this.date = date;
 	}
 
-	public Long getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(Long studentId) {
-		this.studentId = studentId;
-	}
-
 	public Long getSubjectId() {
 		return subjectId;
 	}
 
 	public void setSubjectId(Long subjectId) {
 		this.subjectId = subjectId;
+	}
+
+	public List<Long> getStudentsId() {
+		return studentsId;
 	}
 
 	@Override

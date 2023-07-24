@@ -14,8 +14,7 @@ import com.projects.EduLink.entities.User;
 public interface TestRepository extends JpaRepository<Test,Long>{
 
 	@Query("SELECT obj FROM Test obj WHERE "
-			+ "((obj.student = :user) OR "
-			+ "(obj.student.parents CONTAINS(:user))) AND "
+			+ "(obj.students CONTAINS(:user)) AND "
 			+ "(obj.subject = :subject) AND "
 			+ "(obj.subject.team = :team) "
 			+ "ORDER BY obj.date DESC")
