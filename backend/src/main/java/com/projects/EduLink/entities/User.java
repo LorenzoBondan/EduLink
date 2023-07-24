@@ -50,6 +50,12 @@ public class User implements UserDetails, Serializable{
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Notification> notifications = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
+	private List<Message> messagesSent = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "receiver", fetch = FetchType.EAGER)
+	private List<Message> messagesReceived = new ArrayList<>();
+	
 	
 	public User() {
 	}
@@ -105,6 +111,14 @@ public class User implements UserDetails, Serializable{
 
 	public List<Notification> getNotifications() {
 		return notifications;
+	}
+
+	public List<Message> getMessagesSent() {
+		return messagesSent;
+	}
+
+	public List<Message> getMessagesReceived() {
+		return messagesReceived;
 	}
 
 	@Override
