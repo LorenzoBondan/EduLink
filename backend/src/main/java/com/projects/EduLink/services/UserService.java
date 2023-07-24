@@ -17,17 +17,24 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.projects.EduLink.dto.MessageDTO;
 import com.projects.EduLink.dto.NotificationDTO;
 import com.projects.EduLink.dto.RoleDTO;
+import com.projects.EduLink.dto.TestDTO;
 import com.projects.EduLink.dto.UserDTO;
 import com.projects.EduLink.dto.UserInsertDTO;
 import com.projects.EduLink.dto.UserUpdateDTO;
+import com.projects.EduLink.entities.Message;
 import com.projects.EduLink.entities.Notification;
 import com.projects.EduLink.entities.Role;
+import com.projects.EduLink.entities.Subject;
+import com.projects.EduLink.entities.Test;
 import com.projects.EduLink.entities.User;
 import com.projects.EduLink.repositories.MessageRepository;
 import com.projects.EduLink.repositories.NotificationRepository;
 import com.projects.EduLink.repositories.RoleRepository;
+import com.projects.EduLink.repositories.SubjectRepository;
+import com.projects.EduLink.repositories.TestRepository;
 import com.projects.EduLink.repositories.UserRepository;
 import com.projects.EduLink.services.exceptions.DataBaseException;
 import com.projects.EduLink.services.exceptions.ResourceNotFoundException;
@@ -132,6 +139,36 @@ public class UserService implements UserDetailsService {
 		for (Long parentId : dto.getParentsId()) {
 			User parent = repository.getOne(parentId);
 			entity.getParents().add(parent);
+		}
+		
+		for (Long childrenId : dto.getChildrenId()) {
+			User children = repository.getOne(childrenId);
+			entity.getChildren().add(children);
+		}
+		
+		for (MessageDTO mesDto : dto.getMessagesSent()) {
+			Message message = messageRepository.getOne(mesDto.getId());
+			entity.getMessagesSent().add(message);
+		}
+		
+		for (MessageDTO mesDto : dto.getMessagesReceived()) {
+			Message message = messageRepository.getOne(mesDto.getId());
+			entity.getMessagesReceived().add(message);
+		}
+		
+		for (Long subjectId : dto.getSubjectsSubscribedId()) {
+			Subject subject = subjectRepository.getOne(subjectId);
+			entity.getSubjectsSubscribed().add(subject);
+		}
+		
+		for (Long subjectId : dto.getSubjectsTaughtId()) {
+			Subject subject = subjectRepository.getOne(subjectId);
+			entity.getSubjectsTaught().add(subject);
+		}
+		
+		for (TestDTO testDto : dto.getTests()) {
+			Test test = testRepository.getOne(testDto.getId());
+			entity.getTests().add(test);
 		}
 
 	}
