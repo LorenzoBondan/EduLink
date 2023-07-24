@@ -28,8 +28,9 @@ public class MessageService {
 	private UserRepository userRepository;
 	
 	@Transactional(readOnly = true)
-	public Page<MessageDTO> messagesBySenderAndReceiver(User receiver, Pageable pageable){
+	public Page<MessageDTO> messagesBySenderAndReceiver(Long receiverId, Pageable pageable){
 		User user = authService.authenticated();
+		User receiver = userRepository.getOne(receiverId);
 		Page<Message> page = repository.getMessagesBySenderAndReceiver(user, receiver, pageable);
 		return page.map(x -> new MessageDTO(x));
 	}
