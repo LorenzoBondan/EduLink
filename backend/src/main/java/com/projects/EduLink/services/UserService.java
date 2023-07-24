@@ -25,6 +25,7 @@ import com.projects.EduLink.dto.UserUpdateDTO;
 import com.projects.EduLink.entities.Notification;
 import com.projects.EduLink.entities.Role;
 import com.projects.EduLink.entities.User;
+import com.projects.EduLink.repositories.MessageRepository;
 import com.projects.EduLink.repositories.NotificationRepository;
 import com.projects.EduLink.repositories.RoleRepository;
 import com.projects.EduLink.repositories.UserRepository;
@@ -47,6 +48,15 @@ public class UserService implements UserDetailsService {
 	
 	@Autowired
 	private NotificationRepository notificationRepository;
+	
+	@Autowired
+	private MessageRepository messageRepository;
+	
+	@Autowired
+	private SubjectRepository subjectRepository;
+	
+	@Autowired
+	private TestRepository testRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(String name, Pageable pageable) {
@@ -117,6 +127,11 @@ public class UserService implements UserDetailsService {
 		for (NotificationDTO notDto : dto.getNotifications()) {
 			Notification notification = notificationRepository.getOne(notDto.getId());
 			entity.getNotifications().add(notification);
+		}
+		
+		for (Long parentId : dto.getParentsId()) {
+			User parent = repository.getOne(parentId);
+			entity.getParents().add(parent);
 		}
 
 	}

@@ -16,3 +16,5 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 4);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 3);
 
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('First message', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 2, 1);
+
