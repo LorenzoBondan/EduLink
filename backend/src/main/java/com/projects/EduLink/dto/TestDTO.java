@@ -25,6 +25,7 @@ public class TestDTO implements Serializable {
 	
 	public TestDTO(Test entity) {
 		this.id = entity.getId();
+		this.points = entity.getPoints();
 		this.name = entity.getName();
 		this.score = entity.getScore();
 		this.date = entity.getDate();
