@@ -1,7 +1,9 @@
 package com.projects.EduLink.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
@@ -38,6 +41,9 @@ public class Subject implements Serializable{
 				joinColumns = @JoinColumn(name = "subject_id"), 
 				inverseJoinColumns = @JoinColumn(name = "student_id"))
 	private Set<User> students = new HashSet<>();
+	
+	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+	private List<Test> tests = new ArrayList<>();
 	
 	public Subject() {}
 
@@ -83,6 +89,10 @@ public class Subject implements Serializable{
 
 	public Set<User> getStudents() {
 		return students;
+	}
+
+	public List<Test> getTests() {
+		return tests;
 	}
 
 	@Override

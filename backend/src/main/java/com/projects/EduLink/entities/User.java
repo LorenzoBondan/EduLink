@@ -68,6 +68,9 @@ public class User implements UserDetails, Serializable{
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "students")
 	private Set<Subject> subjectsSubscribed = new HashSet<>();
 	
+	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+	private List<Test> tests = new ArrayList<>();
+	
 	public User() {
 	}
 	
@@ -138,6 +141,14 @@ public class User implements UserDetails, Serializable{
 
 	public Set<User> getChildren() {
 		return children;
+	}
+
+	public Set<Subject> getSubjectsSubscribed() {
+		return subjectsSubscribed;
+	}
+
+	public List<Test> getTests() {
+		return tests;
 	}
 
 	@Override
