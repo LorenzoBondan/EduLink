@@ -44,10 +44,10 @@ public class TestService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<TestDTO> findTestsFromStudentSubjectTeam(Long subjectId, String team, Pageable pageable) {
+	public Page<TestDTO> findTestsFromStudentSubjectTeam(Long subjectId, Pageable pageable) {
 		User me = authService.authenticated();
 		Subject subject = subjectRepository.getOne(subjectId);
-		Page<Test> list = repository.getTestsFromStudentSubjectTeam(me, subject, team, pageable);
+		Page<Test> list = repository.getTestsFromStudentSubjectTeam(me, subject, pageable);
 		return list.map(x -> new TestDTO(x));
 	}
 

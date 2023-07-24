@@ -15,8 +15,7 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 
 	@Query("SELECT obj FROM Test obj WHERE "
 			+ "(:user MEMBER OF obj.students) AND "
-			+ "(obj.subject = :subject) AND "
-			+ "(UPPER(obj.subject.team) = UPPER(:team)) "
+			+ "(obj.subject = :subject) "
 			+ "ORDER BY obj.date DESC")
-	Page<Test> getTestsFromStudentSubjectTeam(User user, Subject subject, String team, Pageable pageable);
+	Page<Test> getTestsFromStudentSubjectTeam(User user, Subject subject, Pageable pageable);
 }
