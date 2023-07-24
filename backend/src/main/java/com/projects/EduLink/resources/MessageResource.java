@@ -25,7 +25,7 @@ public class MessageResource {
 	@Autowired
 	private MessageService service;
 	
-	@GetMapping
+	@GetMapping(value = "/{receiverId}")
 	public ResponseEntity<Page<MessageDTO>> messagesBySenderAndReceiver(@PathVariable Long receiverId, Pageable pageable) {
 		Page<MessageDTO> page = service.messagesBySenderAndReceiver(receiverId, pageable);
 		return ResponseEntity.ok().body(page);
