@@ -19,10 +19,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-
-
-// ############ RESOURCE SERVER
-
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
@@ -35,9 +31,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 	
+	private static final String[] STUDENT = { "/subjects/**", "/tests/**", "/notifications/**" };
+	
 	private static final String[] PARENT_OR_TEACHER_OR_ADMIN = { "/messages/**", "/subjects/**", "/tests/**", "/notifications/**"};
 	
-	private static final String[] REGISTER = {"/users/**"};
+	private static final String[] TEACHER = { "/tests/**" };
 	
 	private static final String[] ADMIN = { "/users/**"  };
 	
@@ -55,12 +53,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll() 
+		.antMatchers(HttpMethod.GET, STUDENT).permitAll() 
+		.antMatchers(STUDENT).hasAnyRole("STUDENT") 
 		.antMatchers(HttpMethod.GET, PARENT_OR_TEACHER_OR_ADMIN).permitAll() 
-		.antMatchers(HttpMethod.POST, REGISTER).permitAll()
-		.antMatchers(HttpMethod.GET, REGISTER).permitAll() // User info
-		.antMatchers(HttpMethod.PUT, REGISTER).permitAll() // User info
-		.antMatchers(HttpMethod.DELETE, PARENT_OR_TEACHER_OR_ADMIN).permitAll()
 		.antMatchers(PARENT_OR_TEACHER_OR_ADMIN).hasAnyRole("PARENT", "TEACHER", "ADMIN") 
+		.antMatchers(HttpMethod.POST, TEACHER).permitAll()
+		.antMatchers(HttpMethod.PUT, TEACHER).permitAll()
+		.antMatchers(HttpMethod.DELETE, TEACHER).permitAll()
+		.antMatchers(TEACHER).hasAnyRole("TEACHER") 
 		.antMatchers(ADMIN).hasRole("ADMIN") 
 		.anyRequest().authenticated();
 		
