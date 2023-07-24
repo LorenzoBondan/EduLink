@@ -42,6 +42,15 @@ public class User implements UserDetails, Serializable{
 	private String imgUrl;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_parent_childen",
+				joinColumns = @JoinColumn(name = "parent_id"), 
+				inverseJoinColumns = @JoinColumn(name = "children_id"))
+	private Set<User> parents = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "parents")
+	private Set<User> children = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -119,6 +128,14 @@ public class User implements UserDetails, Serializable{
 
 	public List<Message> getMessagesReceived() {
 		return messagesReceived;
+	}
+
+	public Set<User> getParents() {
+		return parents;
+	}
+
+	public Set<User> getChildren() {
+		return children;
 	}
 
 	@Override
