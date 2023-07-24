@@ -105,18 +105,18 @@ public class TestService {
 	public Double getMinScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
 		Double minScore = repository.getMinScoreFromTest(subject, name);
-		return minScore;
+		return Math.round(minScore * 100.0) / 100.0;
 	}
 	
 	public Double getMaxScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
 		Double maxScore = repository.getMaxScoreFromTest(subject, name);
-		return maxScore;
+		return Math.round(maxScore * 100.0) / 100.0;
 	}
 	
 	public Double getAvgScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
 		Double avgScore = repository.getAvgScoreFromTest(subject, name);
-		return avgScore;
+		return Math.round(avgScore * 100.0) / 100.0;
 	}
 }
