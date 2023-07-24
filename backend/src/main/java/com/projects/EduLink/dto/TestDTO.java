@@ -14,6 +14,7 @@ public class TestDTO implements Serializable {
 
 	private Long id;
 	private String name;
+	private Double points;
 	private Double score;
 	private LocalDateTime date;
 	private Long subjectId;
@@ -32,10 +33,11 @@ public class TestDTO implements Serializable {
 		entity.getStudents().forEach(student -> this.studentsId.add(student.getId()));
 	}
 
-	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long subjectId, Double minScore, Double maxScore, Double avgScore) {
+	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long subjectId, Double points) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.points = points;
 		this.score = score;
 		this.date = date;
 		this.subjectId = subjectId;
@@ -55,6 +57,14 @@ public class TestDTO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Double getPoints() {
+		return points;
+	}
+
+	public void setPoints(Double points) {
+		this.points = points;
 	}
 
 	public Double getScore() {

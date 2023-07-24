@@ -17,7 +17,7 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 			+ "(:user MEMBER OF obj.students) AND "
 			+ "(obj.subject = :subject) "
 			+ "ORDER BY obj.date DESC")
-	Page<Test> getTestsFromStudentSubjectTeam(User user, Subject subject, Pageable pageable);
+	Page<Test> getTestsFromStudentSubject(User user, Subject subject, Pageable pageable);
 	
 	@Query("SELECT MIN(obj.score) FROM Test obj	WHERE "
 			+ "obj.subject = :subject AND "

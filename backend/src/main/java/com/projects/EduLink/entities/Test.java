@@ -26,6 +26,7 @@ public class Test implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private Double points;
 	private Double score;
 	private LocalDateTime date;
 	
@@ -38,10 +39,11 @@ public class Test implements Serializable{
 	
 	public Test() {}
 
-	public Test(Long id, String name, Double score, LocalDateTime date, Subject subject) {
+	public Test(Long id, String name, Double score, Double points, LocalDateTime date, Subject subject) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.points = points;
 		this.score = score;
 		this.date = date;
 		this.subject = subject;
@@ -61,6 +63,14 @@ public class Test implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Double getPoints() {
+		return points;
+	}
+
+	public void setPoints(Double points) {
+		this.points = points;
 	}
 
 	public Double getScore() {

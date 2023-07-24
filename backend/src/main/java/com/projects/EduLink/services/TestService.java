@@ -50,10 +50,10 @@ public class TestService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<TestDTO> findTestsFromStudentSubjectTeam(Long subjectId, Pageable pageable) {
+	public Page<TestDTO> findTestsFromStudentSubject(Long subjectId, Pageable pageable) {
 		User me = authService.authenticated();
 		Subject subject = subjectRepository.getOne(subjectId);
-		Page<Test> list = repository.getTestsFromStudentSubjectTeam(me, subject, pageable);
+		Page<Test> list = repository.getTestsFromStudentSubject(me, subject, pageable);
 		return list.map(x -> new TestDTO(x));
 	}
 
@@ -154,6 +154,7 @@ public class TestService {
 	
 	private void copyDtoToEntity(TestDTO dto, Test entity) {
 		entity.setName(dto.getName());
+		entity.setPoints(dto.getPoints());
 		entity.setDate(dto.getDate());
 		entity.setScore(dto.getScore());
 		entity.setSubject(subjectRepository.getOne(dto.getSubjectId()));

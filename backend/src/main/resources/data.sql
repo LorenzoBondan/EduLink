@@ -27,9 +27,9 @@ INSERT INTO tb_subject_student (subject_id, student_id) VALUES (1, 1);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (1, 5);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (2, 1);
 
-INSERT INTO tb_test (name, score, date, subject_id) VALUES ('Math test 1', 5.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
-INSERT INTO tb_test (name, score, date, subject_id) VALUES ('Math test 1', 9.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
-INSERT INTO tb_test (name, score, date, subject_id) VALUES ('Physical test 1', 8.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-20T09:30:00', 2);
+INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 5.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
+INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 9.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
+INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Physical test 1', 10.0, 8.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-20T09:30:00', 2);
 
 INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (3, 1);
 
