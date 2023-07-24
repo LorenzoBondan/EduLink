@@ -71,6 +71,9 @@ public class User implements UserDetails, Serializable{
 	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
 	private List<Test> tests = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
+	private List<Subject> subjectsTaught = new ArrayList<>();
+	
 	public User() {
 	}
 	
@@ -149,6 +152,10 @@ public class User implements UserDetails, Serializable{
 
 	public List<Test> getTests() {
 		return tests;
+	}
+
+	public List<Subject> getSubjectsTaught() {
+		return subjectsTaught;
 	}
 
 	@Override

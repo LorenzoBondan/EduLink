@@ -33,7 +33,9 @@ public class UserDTO implements Serializable {
 	
 	private List<MessageDTO> messagesReceived = new ArrayList<>();
 	
-	private List<Long> subjectsId = new ArrayList<>();
+	private List<Long> subjectsSubscribedId = new ArrayList<>();
+	
+	private List<Long> subjectsTaughtId = new ArrayList<>();
 	
 	private List<TestDTO> tests = new ArrayList<>();
 	
@@ -59,7 +61,8 @@ public class UserDTO implements Serializable {
 		entity.getChildren().forEach(chi -> this.childrenId.add(chi.getId()));
 		entity.getMessagesSent().forEach(mes -> this.messagesSent.add(new MessageDTO(mes)));
 		entity.getMessagesReceived().forEach(mes -> this.messagesReceived.add(new MessageDTO(mes)));
-		entity.getSubjectsSubscribed().forEach(sub -> this.subjectsId.add(sub.getId()));
+		entity.getSubjectsSubscribed().forEach(sub -> this.subjectsSubscribedId.add(sub.getId()));
+		entity.getSubjectsTaught().forEach(sub -> this.subjectsTaughtId.add(sub.getId()));
 		entity.getTests().forEach(test -> this.tests.add(new TestDTO(test)));
 	}
 
@@ -119,8 +122,12 @@ public class UserDTO implements Serializable {
 		return messagesReceived;
 	}
 
-	public List<Long> getSubjectsId() {
-		return subjectsId;
+	public List<Long> getSubjectsSubscribedId() {
+		return subjectsSubscribedId;
+	}
+
+	public List<Long> getSubjectsTaughtId() {
+		return subjectsTaughtId;
 	}
 
 	public List<TestDTO> getTests() {
