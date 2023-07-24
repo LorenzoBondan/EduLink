@@ -1,5 +1,6 @@
 package com.projects.EduLink.services;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -13,9 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projects.EduLink.dto.TestDTO;
+import com.projects.EduLink.entities.Notification;
 import com.projects.EduLink.entities.Subject;
 import com.projects.EduLink.entities.Test;
 import com.projects.EduLink.entities.User;
+import com.projects.EduLink.repositories.NotificationRepository;
 import com.projects.EduLink.repositories.SubjectRepository;
 import com.projects.EduLink.repositories.TestRepository;
 import com.projects.EduLink.repositories.UserRepository;
@@ -36,6 +39,9 @@ public class TestService {
 	
 	@Autowired
 	private AuthService authService;
+	
+	@Autowired
+	private NotificationRepository notificationRepository;
 
 	@Transactional(readOnly = true)
 	public Page<TestDTO> findAllPaged(Pageable pageable) {
@@ -62,6 +68,31 @@ public class TestService {
 	public TestDTO insert(TestDTO dto) {
 		Test entity = new Test();
 		copyDtoToEntity(dto, entity);
+		
+		//send a notification to the students
+		for(User student : entity.getStudents()) {
+			Notification notification = new Notification();
+			notification.setDescription("A new test score has been published for the test " + entity.getName() + " of " + entity.getSubject().getName() + ".");
+			LocalDateTime date = LocalDateTime.now();
+			notification.setMoment(date);
+			notification.setRead(false);
+			notification.setUser(student);
+			notification = notificationRepository.save(notification);
+		}
+		
+		//send a notification to the parents
+		for(User student : entity.getStudents()) {
+			for(User parent : student.getParents()) {
+				Notification notification = new Notification();
+				notification.setDescription("A new test score has been published for the test " + entity.getName() + " of " + entity.getSubject().getName() + " of your children " + student.getName() + ".");
+				LocalDateTime date = LocalDateTime.now();
+				notification.setMoment(date);
+				notification.setRead(false);
+				notification.setUser(parent);
+				notification = notificationRepository.save(notification);
+			}
+		}
+		
 		entity = repository.save(entity);
 		return new TestDTO(entity);
 	}
@@ -70,7 +101,38 @@ public class TestService {
 	public TestDTO update(Long id, TestDTO dto) {
 		try {
 			Test entity = repository.getOne(id);
+			Double oldScore = entity.getScore();
+			
 			copyDtoToEntity(dto, entity);
+			
+			Double newScore = entity.getScore();
+			
+			if(oldScore != newScore) {
+				//send a notification to the students
+				for(User student : entity.getStudents()) {
+					Notification notification = new Notification();
+					notification.setDescription("Your test score has been updated for the test " + entity.getName() + " of " + entity.getSubject().getName() + ".");
+					LocalDateTime date = LocalDateTime.now();
+					notification.setMoment(date);
+					notification.setRead(false);
+					notification.setUser(student);
+					notification = notificationRepository.save(notification);
+				}
+				
+				//send a notification to the parents
+				for(User student : entity.getStudents()) {
+					for(User parent : student.getParents()) {
+						Notification notification = new Notification();
+						notification.setDescription("The test score has been updated for the test " + entity.getName() + " of " + entity.getSubject().getName() + " of your children " + student.getName() + ".");
+						LocalDateTime date = LocalDateTime.now();
+						notification.setMoment(date);
+						notification.setRead(false);
+						notification.setUser(parent);
+						notification = notificationRepository.save(notification);
+					}
+				}
+			}
+			
 			entity = repository.save(entity);
 			return new TestDTO(entity);
 		} catch (EntityNotFoundException e) {
