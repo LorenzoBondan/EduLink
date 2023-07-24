@@ -25,6 +25,18 @@ public class UserDTO implements Serializable {
 	
 	private List<NotificationDTO> notifications = new ArrayList<>(); 
 	
+	private List<Long> parentsId = new ArrayList<>();
+	
+	private List<Long> childrenId = new ArrayList<>();
+	
+	private List<MessageDTO> messagesSent = new ArrayList<>();
+	
+	private List<MessageDTO> messagesReceived = new ArrayList<>();
+	
+	private List<Long> subjectsId = new ArrayList<>();
+	
+	private List<TestDTO> tests = new ArrayList<>();
+	
 	public UserDTO() {}
 
 	public UserDTO(Long id, String name, String email, String password, String imgUrl) {
@@ -43,6 +55,12 @@ public class UserDTO implements Serializable {
 		
 		entity.getRoles().forEach(rol -> this.roles.add(new RoleDTO(rol)));
 		entity.getNotifications().forEach(not -> this.notifications.add(new NotificationDTO(not)));
+		entity.getParents().forEach(par -> this.parentsId.add(par.getId()));
+		entity.getChildren().forEach(chi -> this.childrenId.add(chi.getId()));
+		entity.getMessagesSent().forEach(mes -> this.messagesSent.add(new MessageDTO(mes)));
+		entity.getMessagesReceived().forEach(mes -> this.messagesReceived.add(new MessageDTO(mes)));
+		entity.getSubjectsSubscribed().forEach(sub -> this.subjectsId.add(sub.getId()));
+		entity.getTests().forEach(test -> this.tests.add(new TestDTO(test)));
 	}
 
 	public Long getId() {
@@ -83,6 +101,30 @@ public class UserDTO implements Serializable {
 
 	public List<NotificationDTO> getNotifications() {
 		return notifications;
+	}
+
+	public List<Long> getParentsId() {
+		return parentsId;
+	}
+
+	public List<Long> getChildrenId() {
+		return childrenId;
+	}
+
+	public List<MessageDTO> getMessagesSent() {
+		return messagesSent;
+	}
+
+	public List<MessageDTO> getMessagesReceived() {
+		return messagesReceived;
+	}
+
+	public List<Long> getSubjectsId() {
+		return subjectsId;
+	}
+
+	public List<TestDTO> getTests() {
+		return tests;
 	}
 
 	@Override
