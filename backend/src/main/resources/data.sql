@@ -18,3 +18,13 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 3);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('First message', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 2, 1);
 
+INSERT INTO tb_subject (name, team, teacher_id) VALUES ('Math', '7ano 1', 2);
+
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (1, 1);
+
+INSERT INTO tb_test (name, score, date, student_id, subject_id) VALUES ('Math test 1', 5.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1, 1);
+
+INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (3, 1);
+
+
+

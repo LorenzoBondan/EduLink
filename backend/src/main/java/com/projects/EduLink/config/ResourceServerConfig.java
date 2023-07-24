@@ -35,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
 	
-	private static final String[] OPERATOR_OR_ADMIN = { "/messages/**", "/exchanges/**", "/notifications/**"};
+	private static final String[] PARENT_OR_TEACHER_OR_ADMIN = { "/messages/**", "/subjects/**", "/tests/**", "/notifications/**"};
 	
 	private static final String[] REGISTER = {"/users/**"};
 	
@@ -55,12 +55,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll() 
-		.antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll() 
+		.antMatchers(HttpMethod.GET, PARENT_OR_TEACHER_OR_ADMIN).permitAll() 
 		.antMatchers(HttpMethod.POST, REGISTER).permitAll()
 		.antMatchers(HttpMethod.GET, REGISTER).permitAll() // User info
 		.antMatchers(HttpMethod.PUT, REGISTER).permitAll() // User info
-		.antMatchers(HttpMethod.DELETE, OPERATOR_OR_ADMIN).permitAll()
-		.antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN") 
+		.antMatchers(HttpMethod.DELETE, PARENT_OR_TEACHER_OR_ADMIN).permitAll()
+		.antMatchers(PARENT_OR_TEACHER_OR_ADMIN).hasAnyRole("PARENT", "TEACHER", "ADMIN") 
 		.antMatchers(ADMIN).hasRole("ADMIN") 
 		.anyRequest().authenticated();
 		

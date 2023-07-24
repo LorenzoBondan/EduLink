@@ -11,14 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Id;
-
 
 @Entity
 @Table(name = "tb_subject")
@@ -30,7 +29,7 @@ public class Subject implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String group;
+	private String team;
 	
 	@ManyToOne
     @JoinColumn(name = "teacher_id")
@@ -47,11 +46,11 @@ public class Subject implements Serializable{
 	
 	public Subject() {}
 
-	public Subject(Long id, String name, String group, User teacher) {
+	public Subject(Long id, String name, String team, User teacher) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.group = group;
+		this.team = team;
 		this.teacher = teacher;
 	}
 
@@ -71,12 +70,12 @@ public class Subject implements Serializable{
 		this.name = name;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getTeam() {
+		return team;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setTeam(String team) {
+		this.team = team;
 	}
 
 	public User getTeacher() {

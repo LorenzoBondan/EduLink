@@ -13,7 +13,7 @@ public class SubjectDTO implements Serializable {
 
 	private Long id;
 	private String name;
-	private String group;
+	private String team;
 	private Long teacherId;
 	
 	private List<UserDTO> students = new ArrayList<>();
@@ -22,18 +22,18 @@ public class SubjectDTO implements Serializable {
 	
 	public SubjectDTO() {}
 
-	public SubjectDTO(Long id, String name, String group, Long teacherId) {
+	public SubjectDTO(Long id, String name, String team, Long teacherId) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.group = group;
+		this.team = team;
 		this.teacherId = teacherId;
 	}
 	
 	public SubjectDTO(Subject entity) {
 		this.id = entity.getId();
 		this.name = entity.getName();
-		this.group = entity.getGroup();
+		this.team = entity.getTeam();
 		this.teacherId = entity.getTeacher().getId();
 		
 		entity.getStudents().forEach(stu -> this.students.add(new UserDTO(stu)));
@@ -56,12 +56,12 @@ public class SubjectDTO implements Serializable {
 		this.name = name;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getTeam() {
+		return team;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setTeam(String team) {
+		this.team = team;
 	}
 
 	public Long getTeacherId() {
