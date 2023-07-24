@@ -68,4 +68,22 @@ public class TestResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@GetMapping(value = "/minScore/{subjectId}/{name}")
+	public Double findMinScore(@PathVariable Long subjectId, @PathVariable String name)	{		
+		Double minScore = service.getMinScore(subjectId, name);	
+		return minScore;
+	}
+	
+	@GetMapping(value = "/maxScore/{subjectId}/{name}")
+	public Double findMaxScore(@PathVariable Long subjectId, @PathVariable String name)	{		
+		Double minScore = service.getMaxScore(subjectId, name);	
+		return minScore;
+	}
+	
+	@GetMapping(value = "/avgScore/{subjectId}/{name}")
+	public Double findAvgScore(@PathVariable Long subjectId, @PathVariable String name)	{		
+		Double minScore = service.getAvgScore(subjectId, name);	
+		return minScore;
+	}
+	
 }

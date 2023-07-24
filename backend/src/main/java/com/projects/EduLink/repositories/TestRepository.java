@@ -18,4 +18,19 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 			+ "(obj.subject = :subject) "
 			+ "ORDER BY obj.date DESC")
 	Page<Test> getTestsFromStudentSubjectTeam(User user, Subject subject, Pageable pageable);
+	
+	@Query("SELECT MIN(obj.score) FROM Test obj	WHERE "
+			+ "obj.subject = :subject AND "
+			+ "UPPER(obj.name) LIKE UPPER(:name)")
+	Double getMinScoreFromTest(Subject subject, String name);
+	
+	@Query("SELECT MAX(obj.score) FROM Test obj WHERE "
+			+ "obj.subject = :subject AND "
+			+ "UPPER(obj.name) LIKE UPPER(:name)")
+	Double getMaxScoreFromTest(Subject subject, String name);
+	
+	@Query("SELECT AVG(obj.score) FROM Test obj WHERE "
+			+ "obj.subject = :subject AND "
+			+ "UPPER(obj.name) LIKE UPPER(:name)")
+	Double getAvgScoreFromTest(Subject subject, String name);
 }

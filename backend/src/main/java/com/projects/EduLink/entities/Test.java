@@ -16,6 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.projects.EduLink.repositories.SubjectRepository;
+import com.projects.EduLink.repositories.TestRepository;
+
 @Entity
 @Table(name = "tb_test")
 public class Test implements Serializable{

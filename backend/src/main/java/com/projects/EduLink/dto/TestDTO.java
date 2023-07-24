@@ -32,7 +32,7 @@ public class TestDTO implements Serializable {
 		entity.getStudents().forEach(student -> this.studentsId.add(student.getId()));
 	}
 
-	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long subjectId) {
+	public TestDTO(Long id, String name, Double score, LocalDateTime date, Long subjectId, Double minScore, Double maxScore, Double avgScore) {
 		super();
 		this.id = id;
 		this.name = name;

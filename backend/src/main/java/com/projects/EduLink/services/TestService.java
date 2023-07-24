@@ -101,4 +101,22 @@ public class TestService {
 			entity.getStudents().add(student);
 		}
 	}
+	
+	public Double getMinScore(Long subjectId, String name) {
+		Subject subject = subjectRepository.getOne(subjectId);
+		Double minScore = repository.getMinScoreFromTest(subject, name);
+		return minScore;
+	}
+	
+	public Double getMaxScore(Long subjectId, String name) {
+		Subject subject = subjectRepository.getOne(subjectId);
+		Double maxScore = repository.getMaxScoreFromTest(subject, name);
+		return maxScore;
+	}
+	
+	public Double getAvgScore(Long subjectId, String name) {
+		Subject subject = subjectRepository.getOne(subjectId);
+		Double avgScore = repository.getAvgScoreFromTest(subject, name);
+		return avgScore;
+	}
 }
