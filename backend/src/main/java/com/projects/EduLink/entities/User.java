@@ -65,6 +65,8 @@ public class User implements UserDetails, Serializable{
 	@OneToMany(mappedBy = "receiver", fetch = FetchType.EAGER)
 	private List<Message> messagesReceived = new ArrayList<>();
 	
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "students")
+	private Set<Subject> subjectsSubscribed = new HashSet<>();
 	
 	public User() {
 	}
