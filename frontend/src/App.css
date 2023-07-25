@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@200;400;700&family=Raleway:wght@400;700&display=swap');
+
+*, *::before, *::after{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* títulos principais do projeto estão em negrito */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin-bottom: 0;
+  text-decoration: none !important;
+}
+
+/* textos -> sem o sublinhado */
+a, a:hover{
+  text-decoration: none !important;
+  color: unset !important;
+}
+
+ul {
+  list-style-type: none; /* sem as bolinhas pretas no meio */
+  margin: 0;
+  padding: 0;
+}
+
+.base-card{
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background-color: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(5px);
+}
+
+/* TEXTBOX */
+.base-input {
+  font-size: 1rem !important;
+  letter-spacing: -0.015em !important; 
+  height: 40px !important;
+  background-color: transparent !important;
+  border-radius: 5px !important;
+  border: 1px solid #aeaeae;
+  transition : border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition-duration: 0.15s, 0.15s;
+  transition-timing-function: ease-in-out, ease-in-out;
+  transition-delay: 0s, 0s;
+  transition-property: border-color, box-shadow;
+  width: 100%;
+  padding: 0.375rem 0.95rem;
+  color: white;
+}
+
+.base-input::placeholder {
+  color: #9E9E9E !important;
+}
+
+.base-input:active{
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.base-input:focus {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.flex-direction-row{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flex-direction-column{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal-overlay{
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content{
+  width: 90%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media(min-width:1200px){
+  .flex-direction-row{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .margin-left-85{
+    margin-left: 85px;
+  }
+}
