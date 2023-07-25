@@ -4,7 +4,6 @@ import { IoIosNotificationsOutline } from 'react-icons/io';
 import { HiOutlineChatBubbleOvalLeft } from 'react-icons/hi2';
 import { TbClipboardData } from 'react-icons/tb';
 import { HiLogout } from 'react-icons/hi';
-import { HiLogin } from 'react-icons/hi';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { User } from 'types';
 import { getTokenData, hasAnyRoles, isAuthenticated } from 'util/auth';
@@ -92,7 +91,7 @@ const TopNavbar = () => {
                 <img src={logo} alt="" />
                 <h4>EDULINK</h4>
               </div>
-              {authContextData.authenticated ?
+              {authContextData.authenticated &&
               <>
               <div className='second-container-navbar'>
                   <ReactTooltip id="top-navbar-tooltip" place="bottom" />
@@ -125,13 +124,8 @@ const TopNavbar = () => {
                     </NavLink>
                   </div>
               </div>
-              </> : (
-                <div className='top-navbar-login-container'>
-                    <NavLink to="/auth/login" className="login-nav-item">
-                      <p><HiLogin/> Sign In</p>
-                    </NavLink>
-                </div>
-              )}
+              </>
+              }
           </div>
           {showNotifications && 
             <div className='top-navbar-notifications-container'>

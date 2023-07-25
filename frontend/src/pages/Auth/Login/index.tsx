@@ -60,8 +60,7 @@ const Login = () => {
     };
 
     return(
-            <div className="base-card login-card">
-                <h1>LOGIN</h1>
+            <div className="login-card">
                 { hasError && (
                     <div className="alert alert-danger">
                        Error when trying to login
@@ -100,6 +99,9 @@ const Login = () => {
                     </div>
                     <div className="login-submit">
                         <button className='btn btn-primary'>LOGIN</button>
+                    </div>
+                    <div className='login-waring'>
+                        <p>If you don't have an account, ask your instituion for one.</p>
                     </div>
                 </form>
             </div>
