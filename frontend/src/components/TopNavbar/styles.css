@@ -36,12 +36,13 @@
     align-items: center;
     width: 20%;
     justify-content: center;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .second-container-navbar{
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
     width: 100%;
 }
@@ -161,13 +162,13 @@
     }
 
     .top-navbar-profile-container{
-        width: 40%;
-        justify-content: flex-end;
+        width: 100%;
+        justify-content: center;
     }
 
     .top-navbar-buttons-container{
-        width: 60%;
-        justify-content: flex-start;
+        width: 100%;
+        justify-content: center;
     }
 
     .main-container-navbar img{
@@ -208,9 +209,11 @@
     .top-navbar-profile-container{
         width: 100%;
         justify-content: flex-end;
+        margin-bottom: 0;
     }
     
     .second-container-navbar{
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         width: 30%;
