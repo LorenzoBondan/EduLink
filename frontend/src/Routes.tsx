@@ -6,6 +6,7 @@ import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { isAuthenticated } from "util/auth";
 import history from "util/history";
 import background from 'assets/images/background.jpg';
+import Subjects from "pages/Subjects";
 
 const Routes = () => {
 
@@ -36,8 +37,8 @@ const Routes = () => {
 
                     {isAuthenticated() && (
                         <Switch>
-                            <Route path="/exchanges" exact>
-                                
+                            <Route path="/subjects" exact>
+                                <Subjects/>
                             </Route>
 
                             <Route path="/disponibleExchanges" exact>
