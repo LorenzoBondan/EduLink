@@ -7,7 +7,7 @@
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 }
 
-.exchanges-container-navbar{
+.main-container-navbar{
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,6 @@
     margin-bottom: 0;
     margin-left: 5px;
     font-weight: 700;
-    color: #00FFFF;
 }
 
 .top-navbar-profile-container{
@@ -40,21 +39,20 @@
     margin-right: 10px;
 }
 
-.exchanges-container-second{
+.second-container-navbar{
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
     width: 100%;
 }
 
-.exchanges-container-navbar img{
+.main-container-navbar img{
     height: 20px;
     border-radius: 50%;
     margin-right: 5px;
-    border: 2px solid #eaeaea;
 }
 
-.exchanges-container-navbar h1{
+.main-container-navbar h1{
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 0;
@@ -62,11 +60,11 @@
     padding-right: 12px;
 }
 
-.exchanges-container-navbar h1:hover{
-    color: #00FFFF;
+.main-container-navbar h1:hover{
+    color: #FFF;
 }
 
-.exchanges-container-second p {
+.second-container-navbar p {
     margin-bottom: 0;
     font-size: 20px;
     margin-right: 10px;
@@ -75,7 +73,7 @@
     align-items: center;
 }
 
-.exchanges-container-second p:hover {
+.second-container-navbar p:hover {
     cursor: pointer;
 }
 
@@ -92,7 +90,7 @@
 }
 
 .top-navbar-icon:hover{
-    color: #00FFFF;
+    color: #FFF;
     transform: scale(1.1);
 }
 
@@ -135,9 +133,18 @@
     color: #fff !important;
 }
 
+.user-role-badge{
+    margin-bottom: 0;
+    font-size: 10px !important;
+    padding: 5px 8px !important;
+    border-radius: 100px;
+    border: 1px solid silver;
+    background-color: darkgray;
+}
+
 @media(min-width:576px){
 
-    .exchanges-container-navbar img{
+    .main-container-navbar img{
         height: 26px;
     }
 
@@ -149,7 +156,7 @@
 
 @media(min-width:768px){
 
-    .exchanges-container-second{
+    .second-container-navbar{
         align-items: center;
     }
 
@@ -163,14 +170,13 @@
         justify-content: flex-start;
     }
 
-    .exchanges-container-navbar img{
+    .main-container-navbar img{
         height: 40px;
     }
 
-    .exchanges-container-navbar h1{
+    .main-container-navbar h1{
         font-size: 20px;
         padding-right: 12px;
-        border-right: 1px dashed #eaeaea;
     }
 }
 
@@ -187,7 +193,7 @@
 
 @media(min-width:1200px){
 
-    .exchanges-container-navbar{
+    .main-container-navbar{
         flex-direction: row;
         align-items: center;
         height: 60px;
@@ -204,13 +210,13 @@
         justify-content: flex-end;
     }
     
-    .exchanges-container-second{
+    .second-container-navbar{
         align-items: center;
         justify-content: space-between;
         width: 30%;
     }
     
-    .exchanges-container-navbar h1{
+    .main-container-navbar h1{
         font-size: 20px;
     }
     

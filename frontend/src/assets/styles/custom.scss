@@ -2,7 +2,7 @@ $theme-colors: (
     'primary': #DE6D4A,
 );
 
-$body-bg: #2A2C2E; /* cor de fundo da página */
-$body-color: #F6F6F6;
+$body-bg: #F6F6F6; /* cor de fundo da página */
+$body-color: #2A2C2E;
 
 @import '~bootstrap/scss/bootstrap.scss';
