@@ -37,6 +37,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] TEACHER = { "/tests/**" };
 	
+	private static final String[] REGISTER = {"/users/**"};
+	
 	private static final String[] ADMIN = { "/users/**"  };
 	
 	@Override
@@ -55,6 +57,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		.antMatchers(PUBLIC).permitAll() 
 		.antMatchers(HttpMethod.GET, STUDENT).permitAll() 
 		.antMatchers(STUDENT).hasAnyRole("STUDENT") 
+		.antMatchers(HttpMethod.GET, REGISTER).permitAll() // User info
+		.antMatchers(HttpMethod.PUT, REGISTER).permitAll() // User info
 		.antMatchers(HttpMethod.GET, PARENT_OR_TEACHER_OR_ADMIN).permitAll() 
 		.antMatchers(PARENT_OR_TEACHER_OR_ADMIN).hasAnyRole("PARENT", "TEACHER", "ADMIN") 
 		.antMatchers(HttpMethod.POST, TEACHER).permitAll()
