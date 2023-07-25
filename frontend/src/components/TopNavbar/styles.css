@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    min-height: 60px;
+    min-height: 95px;
     width: 100%;
 }
 
@@ -197,13 +197,21 @@
     .main-container-navbar{
         flex-direction: row;
         align-items: center;
-        height: 60px;
     }
     
     .top-navbar-brand{
         justify-content: unset;
         width: unset;
         margin-bottom: 0;
+    }
+
+    .main-container-navbar img{
+        height: 50px;
+    }
+
+    .main-container-navbar h4{
+        font-size: 32px;
+        letter-spacing: 0.2rem;
     }
     
     .top-navbar-profile-container{
@@ -216,7 +224,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 30%;
+        width: 35%;
     }
     
     .main-container-navbar h1{
@@ -229,7 +237,7 @@
     }
     
     .top-navbar-icon{
-        font-size: 24px;
+        font-size: 28px;
         margin-right: 5px;
     }
     
