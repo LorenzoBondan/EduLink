@@ -23,7 +23,7 @@ type LocationState = {
 const Login = () => {
 
     const location = useLocation<LocationState>();
-    const {from} = location.state || { from: { pathname: '/exchanges'}};
+    const {from} = location.state || { from: { pathname: '/subjects'}};
 
     const { setAuthContextData } = useContext(AuthContext);
 
