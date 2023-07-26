@@ -167,19 +167,22 @@ public class TestService {
 	
 	public Double getMinScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
-		Double minScore = repository.getMinScoreFromTest(subject, name);
+		String newName = name.replace(' ', '_');
+		Double minScore = repository.getMinScoreFromTest(subject, newName);
 		return Math.round(minScore * 100.0) / 100.0;
 	}
 	
 	public Double getMaxScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
-		Double maxScore = repository.getMaxScoreFromTest(subject, name);
+		String newName = name.replace(' ', '_');
+		Double maxScore = repository.getMaxScoreFromTest(subject, newName);
 		return Math.round(maxScore * 100.0) / 100.0;
 	}
 	
 	public Double getAvgScore(Long subjectId, String name) {
 		Subject subject = subjectRepository.getOne(subjectId);
-		Double avgScore = repository.getAvgScoreFromTest(subject, name);
+		String newName = name.replace(' ', '_');
+		Double avgScore = repository.getAvgScoreFromTest(subject, newName);
 		return Math.round(avgScore * 100.0) / 100.0;
 	}
 }
