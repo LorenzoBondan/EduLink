@@ -6,6 +6,7 @@ import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import SubjectCard from './SubjectCard';
 import { Link } from 'react-router-dom';
+import ChildrenCard from './ChildrenCard';
 
 const Subjects = () => {
 
@@ -64,12 +65,11 @@ const Subjects = () => {
                 {/* PARENT */}
                 {hasAnyRoles(['ROLE_PARENT']) && (
                     <div className='col-lg-4'>
-                        <div className='subject-card'>
+                        <div className='subject-card base-card'>
+                            <h4>Your Children's Subjects</h4>
                             <div className='row'>
                                 {user?.childrenId.map(childrenId => (
-                                    <div className="col-sm-12 col-md-12 col-lg-6 col-xl-3 recipes-column">
-                                        <p>{childrenId}</p>
-                                    </div> 
+                                    <ChildrenCard childrenId={childrenId} key={childrenId} />
                                 ))}
                             </div>
                         </div>
