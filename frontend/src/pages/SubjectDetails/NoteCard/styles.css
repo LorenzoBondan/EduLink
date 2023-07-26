@@ -5,6 +5,9 @@
     justify-content: flex-start;
     width: 100%;
     height: auto;
+    box-shadow: 0 -1px #C7CDD1, inset 0 -1px #C7CDD1;
+    padding: 16px 0;
+    backdrop-filter: blur(100px);
 }
 
 .note-card-teacher-container{
@@ -25,10 +28,16 @@
 .note-card-content-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
     height: 100%;
     width: 70%;
+}
+
+.note-card-content-container h5{
+    font-size: 1rem;
+    margin-bottom: 4px;
+    overflow: hidden;
 }
 
 .note-card-moment-container{
@@ -39,3 +48,15 @@
     height: 100%;
     width: 20%;
 }
+
+.note-card-moment-container p{
+    font-size: 0.8rem;
+    margin: 3px 0 0;
+}
+
+.note-card-moment-container span{
+    font-size: 0.8rem;
+    margin: 3px 0 0;
+    color: #6B7780;
+}
+

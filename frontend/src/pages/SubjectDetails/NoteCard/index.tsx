@@ -39,8 +39,8 @@ const NoteCard = ({note} : Props) => {
                 <h5>{note.text}</h5>
             </div>
             <div className="note-card-moment-container">
-                <h6>Published in:</h6>
-                <p>{convertDateTime(note.moment)}</p>
+                <p><strong>Published in:</strong></p>
+                <span>{convertDateTime(note.moment)}</span>
             </div>
         </div>
     );
