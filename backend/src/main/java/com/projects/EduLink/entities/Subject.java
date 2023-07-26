@@ -47,6 +47,9 @@ public class Subject implements Serializable{
 	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
 	private List<Test> tests = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+	private List<Note> notes = new ArrayList<>();
+	
 	public Subject() {}
 
 	public Subject(Long id, String name, String team, String imgUrl, User teacher) {
@@ -104,6 +107,10 @@ public class Subject implements Serializable{
 
 	public List<Test> getTests() {
 		return tests;
+	}
+
+	public List<Note> getNotes() {
+		return notes;
 	}
 
 	@Override

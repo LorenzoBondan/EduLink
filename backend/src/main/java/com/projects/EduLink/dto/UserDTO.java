@@ -39,6 +39,8 @@ public class UserDTO implements Serializable {
 	
 	private List<TestDTO> tests = new ArrayList<>();
 	
+	private List<NoteDTO> notes = new ArrayList<>();
+	
 	public UserDTO() {}
 
 	public UserDTO(Long id, String name, String email, String password, String imgUrl) {
@@ -64,6 +66,7 @@ public class UserDTO implements Serializable {
 		entity.getSubjectsSubscribed().forEach(sub -> this.subjectsSubscribedId.add(sub.getId()));
 		entity.getSubjectsTaught().forEach(sub -> this.subjectsTaughtId.add(sub.getId()));
 		entity.getTests().forEach(test -> this.tests.add(new TestDTO(test)));
+		entity.getNotes().forEach(note -> this.notes.add(new NoteDTO(note)));
 	}
 
 	public Long getId() {
@@ -132,6 +135,10 @@ public class UserDTO implements Serializable {
 
 	public List<TestDTO> getTests() {
 		return tests;
+	}
+
+	public List<NoteDTO> getNotes() {
+		return notes;
 	}
 
 	@Override

@@ -21,6 +21,8 @@ public class SubjectDTO implements Serializable {
 	
 	private List<TestDTO> tests = new ArrayList<>();
 	
+	private List<NoteDTO> notes = new ArrayList<>();
+	
 	public SubjectDTO() {}
 
 	public SubjectDTO(Long id, String name, String team, String imgUrl, Long teacherId) {
@@ -41,6 +43,7 @@ public class SubjectDTO implements Serializable {
 		
 		entity.getStudents().forEach(stu -> this.students.add(new UserDTO(stu)));
 		entity.getTests().forEach(test -> this.tests.add(new TestDTO(test)));
+		entity.getNotes().forEach(note -> this.notes.add(new NoteDTO(note)));
 	}
 
 	public Long getId() {
@@ -89,6 +92,10 @@ public class SubjectDTO implements Serializable {
 
 	public List<TestDTO> getTests() {
 		return tests;
+	}
+
+	public List<NoteDTO> getNotes() {
+		return notes;
 	}
 
 	@Override
