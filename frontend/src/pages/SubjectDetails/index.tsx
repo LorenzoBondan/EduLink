@@ -69,7 +69,7 @@ const SubjectDetails = () => {
                     </div>
                     <div className='subject-info-item'>
                         <HiOutlineDocumentText/>
-                        <p>{subject?.tests.length}</p>
+                        <p>{tests?.totalElements}</p>
                     </div>
                     <div className='subject-info-item'>
                         <HiOutlineEnvelope/>
@@ -99,16 +99,16 @@ const SubjectDetails = () => {
                     {hasAnyRoles(['ROLE_STUDENT']) && 
                         <Tab.Pane eventKey="tests" className='heigth-100'>
                             <div className='subject-posts-row'>
-                                <table>
+                                <table className='tests-table'>
                                     <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Date</th>
-                                            <th>Score</th>
-                                            <th>Points</th>
-                                            <th>Max Score</th>
-                                            <th>Min Score</th>
-                                            <th>Average Score</th>
+                                            <th style={{textAlign:"center"}}>Score</th>
+                                            <th style={{textAlign:"center"}}>Points</th>
+                                            <th style={{textAlign:"center"}}>Class Max Score</th>
+                                            <th style={{textAlign:"center"}}>Class Min Score</th>
+                                            <th style={{textAlign:"center"}}>Class Average Score</th>
                                         </tr>
                                     </thead>
                                     <tbody>

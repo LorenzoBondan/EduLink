@@ -16,11 +16,11 @@ const TestRow = ({test, subjectId, subjectName}: Props) => {
         return inputString.replace(/\s/g, '_');
     }
 
-    const formattedName = removeSpacesFromString(test.name);
-
     const [minScore, setMinScore] = useState<number>();
 
     const getMinScore = useCallback(() => {
+        const formattedName = removeSpacesFromString(test.name);
+
         const params : AxiosRequestConfig = {
           method:"GET",
           url: `/tests/minScore/${subjectId}/${encodeURIComponent(formattedName)}`,
@@ -30,11 +30,13 @@ const TestRow = ({test, subjectId, subjectName}: Props) => {
           .then(response => {
             setMinScore(response.data);
           })
-    }, [subjectId, subjectName])
+    }, [subjectId, test.name])
 
     const [maxScore, setMaxScore] = useState<number>();
 
     const getMaxScore = useCallback(() => {
+        const formattedName = removeSpacesFromString(test.name);
+
         const params : AxiosRequestConfig = {
           method:"GET",
           url: `/tests/maxScore/${subjectId}/${encodeURIComponent(formattedName)}`,
@@ -44,11 +46,13 @@ const TestRow = ({test, subjectId, subjectName}: Props) => {
           .then(response => {
             setMaxScore(response.data);
           })
-    }, [subjectId, subjectName])
+    }, [subjectId, test.name])
 
     const [avgScore, setAvgScore] = useState<number>();
 
     const getAvgScore = useCallback(() => {
+        const formattedName = removeSpacesFromString(test.name);
+
         const params : AxiosRequestConfig = {
           method:"GET",
           url: `/tests/avgScore/${subjectId}/${encodeURIComponent(formattedName)}`,
@@ -58,7 +62,7 @@ const TestRow = ({test, subjectId, subjectName}: Props) => {
           .then(response => {
             setAvgScore(response.data);
           })
-    }, [subjectId, subjectName])
+    }, [subjectId, test.name])
 
     useEffect(() => {
         getMinScore();
@@ -66,19 +70,15 @@ const TestRow = ({test, subjectId, subjectName}: Props) => {
         getAvgScore();
     }, [getMinScore, getMaxScore, getAvgScore]);
 
-
-
-    
-
     return(
         <tr>
             <td>{test.name}</td>
             <td>{convertDateTime(test.date)}</td>
-            <td>{test.score}</td>
-            <td>{test.points}</td>
-            <td>{minScore}</td>
-            <td>{maxScore}</td>
-            <td>{avgScore}</td>
+            <td style={{textAlign:"center"}}>{test.score}</td>
+            <td style={{textAlign:"center"}}>{test.points}</td>
+            <td style={{textAlign:"center"}}>{maxScore}</td>
+            <td style={{textAlign:"center"}}>{minScore}</td>
+            <td style={{textAlign:"center"}}>{avgScore}</td>
         </tr>
     );
 }
