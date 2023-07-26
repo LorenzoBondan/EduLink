@@ -11,16 +11,21 @@
     width: 262px;
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 20px;
 }
 
 .subject-card-top-container{
-    height: 50%;
+    height: 131px;
     width: 100%;
+    overflow: hidden;
+    opacity: 0.6;
 }
 
 .subject-card-top-container img{
     height: 100%;
     width: 100%;
+    object-fit: cover; 
+    object-position: center;
 }
 
 .subject-card-bottom-container, .subject-card-buttons-container{

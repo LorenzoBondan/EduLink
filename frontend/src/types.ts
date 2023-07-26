@@ -63,6 +63,7 @@ export type Subject = {
     id: number;
     name: string;
     team: string;
+    imgUrl: string;
     teacherId: number;
     students: User[];
     tests: Test[];

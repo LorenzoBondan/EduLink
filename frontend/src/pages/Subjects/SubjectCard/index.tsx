@@ -34,7 +34,7 @@ const SubjectCard = ({subjectId} : Props) => {
     return(
         <div className='subject-card-container'>
             <div className='subject-card-top-container'>
-                <img src="" alt="" />
+                <img src={subject?.imgUrl} alt="" />
             </div>
             <div className='subject-card-bottom-container'>
                 <h5>{subject?.name}</h5>
