@@ -7,6 +7,7 @@ import { isAuthenticated } from "util/auth";
 import history from "util/history";
 import background from 'assets/images/background.jpg';
 import Subjects from "pages/Subjects";
+import SubjectDetails from "pages/SubjectDetails";
 
 const Routes = () => {
 
@@ -39,6 +40,10 @@ const Routes = () => {
                         <Switch>
                             <Route path="/subjects" exact>
                                 <Subjects/>
+                            </Route>
+
+                            <Route path="/subjects/:subjectId" exact>
+                                <SubjectDetails/>
                             </Route>
 
                             <Route path="/disponibleExchanges" exact>

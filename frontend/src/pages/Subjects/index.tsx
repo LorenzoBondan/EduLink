@@ -65,7 +65,7 @@ const Subjects = () => {
                 {/* PARENT */}
                 {hasAnyRoles(['ROLE_PARENT']) && (
                     <div className='col-lg-4'>
-                        <div className='subject-card base-card'>
+                        <div className='subject-card base-card' style={{margin:"0 15px"}}>
                             <h4>Your Children's Subjects</h4>
                             <div className='row'>
                                 {user?.childrenId.map(childrenId => (
@@ -83,12 +83,16 @@ const Subjects = () => {
                             <div className='row'>
                                 <div className='col-lg-6'>
                                     {user?.subjectsTaughtId.slice(0, Math.ceil(user.subjectsTaughtId.length / 2)).map(subjectId => (
-                                        <p>{subjectId}</p>
+                                        <Link to={`/subjects/${subjectId}`}>
+                                            <SubjectCard subjectId={subjectId} key={subjectId} />
+                                        </Link>
                                     ))}
                                 </div>
                                 <div className='col-lg-6'>
                                     {user?.subjectsTaughtId.slice(Math.ceil(user.subjectsTaughtId.length / 2)).map(subjectId => (
-                                        <p>{subjectId}</p>
+                                        <Link to={`/subjects/${subjectId}`}>
+                                            <SubjectCard subjectId={subjectId} key={subjectId} />
+                                        </Link>
                                     ))}
                                 </div>
                             </div>

@@ -4,7 +4,7 @@ import './styles.css';
 import { requestBackend } from 'util/requests';
 import { AxiosRequestConfig } from 'axios';
 import { FaUsers } from 'react-icons/fa';
-import { HiOutlineDocumentText } from 'react-icons/hi2';
+import { HiOutlineDocumentText, HiOutlineEnvelope } from 'react-icons/hi2';
 
 type Props = {
     subjectId: number;
@@ -48,6 +48,10 @@ const SubjectCard = ({subjectId} : Props) => {
                 <div className='subject-card-button'>
                     <HiOutlineDocumentText/>
                     <p>{subject?.tests.length}</p>
+                </div>
+                <div className='subject-card-button'>
+                    <HiOutlineEnvelope/>
+                    <p>0</p>
                 </div>
             </div>
         </div>
