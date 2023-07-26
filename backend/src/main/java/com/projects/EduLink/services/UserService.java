@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projects.EduLink.dto.MessageDTO;
+import com.projects.EduLink.dto.NoteDTO;
 import com.projects.EduLink.dto.NotificationDTO;
 import com.projects.EduLink.dto.RoleDTO;
 import com.projects.EduLink.dto.TestDTO;
@@ -25,12 +26,14 @@ import com.projects.EduLink.dto.UserDTO;
 import com.projects.EduLink.dto.UserInsertDTO;
 import com.projects.EduLink.dto.UserUpdateDTO;
 import com.projects.EduLink.entities.Message;
+import com.projects.EduLink.entities.Note;
 import com.projects.EduLink.entities.Notification;
 import com.projects.EduLink.entities.Role;
 import com.projects.EduLink.entities.Subject;
 import com.projects.EduLink.entities.Test;
 import com.projects.EduLink.entities.User;
 import com.projects.EduLink.repositories.MessageRepository;
+import com.projects.EduLink.repositories.NoteRepository;
 import com.projects.EduLink.repositories.NotificationRepository;
 import com.projects.EduLink.repositories.RoleRepository;
 import com.projects.EduLink.repositories.SubjectRepository;
@@ -64,6 +67,9 @@ public class UserService implements UserDetailsService {
 	
 	@Autowired
 	private TestRepository testRepository;
+	
+	@Autowired
+	private NoteRepository noteRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<UserDTO> findAllPaged(String name, Pageable pageable) {
@@ -169,6 +175,11 @@ public class UserService implements UserDetailsService {
 		for (TestDTO testDto : dto.getTests()) {
 			Test test = testRepository.getOne(testDto.getId());
 			entity.getTests().add(test);
+		}
+		
+		for (NoteDTO noteDto : dto.getNotes()) {
+			Note note = noteRepository.getOne(noteDto.getId());
+			entity.getNotes().add(note);
 		}
 
 	}
