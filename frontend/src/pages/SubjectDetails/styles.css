@@ -48,6 +48,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .subject-info-item{
@@ -66,4 +67,12 @@
     font-weight: 700;
     margin-bottom: 0;
     font-size: 1.2rem;
+}
+
+.subject-details-first-container h3{
+    margin-bottom: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
 }

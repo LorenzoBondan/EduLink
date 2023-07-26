@@ -1,0 +1,55 @@
+.teacher-card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.teacher-card-first-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.teacher-card-first-container img{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+.teacher-card-first-container h4{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #DE6D4A;
+}
+
+.teacher-card-second-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.teacher-card-second-container svg{
+    font-size: 1.4rem;
+    color: #aeaeae;
+    cursor: pointer;
+}
+
+.teacher-card-second-container svg:hover{
+    transform: scale(1.01);
+    transition: 0.3s ease-out;
+    color: #000;
+}
+

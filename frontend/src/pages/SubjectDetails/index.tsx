@@ -6,6 +6,7 @@ import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import { FaUsers } from 'react-icons/fa';
 import { HiOutlineDocumentText, HiOutlineEnvelope } from 'react-icons/hi2';
+import TeacherCard from './TeacherCard';
 
 type UrlParams = {
     subjectId: string;
@@ -71,6 +72,8 @@ const SubjectDetails = () => {
                         <p>0</p>
                     </div>
                 </div>
+                <h3>Teacher</h3>
+                {subject && <TeacherCard teacherId={subject?.teacherId} key={subjectId}/>}
             </div>
             <div className='subject-details-second-container'>
 
