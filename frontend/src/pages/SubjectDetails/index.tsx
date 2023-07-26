@@ -58,7 +58,7 @@ const SubjectDetails = () => {
 
     return(
         <div className="subject-details-container">
-            <div className='subject-details-first-container'>
+            <div className='subject-details-first-container base-card'>
                 <img src={subject?.imgUrl} alt="" />
                 <h1>{subject?.name}</h1>
                 <h5>{subject?.team}</h5>
@@ -79,18 +79,18 @@ const SubjectDetails = () => {
                 <h3>Teacher</h3>
                 {subject && <TeacherCard teacherId={subject?.teacherId} key={subjectId}/>}
             </div>
-            <div className='subject-details-second-container'>
-                <Tab.Container id="subjects-tabs" defaultActiveKey="posts">
+            <div className='subject-details-second-container base-card'>
+                <Tab.Container id="subjects-tabs" defaultActiveKey="notes">
                     <Nav variant="pills" className="nav-pills mb-2 mt-2" id="pills-tab">
                         <Nav.Item>
-                            <Nav.Link eventKey="posts"><BiCommentDetail/></Nav.Link>
+                            <Nav.Link eventKey="notes"><BiCommentDetail/></Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link eventKey="tests"><HiOutlineDocumentText/></Nav.Link>
                         </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className='heigth-100'>
-                    <Tab.Pane eventKey="posts" className='heigth-100'>
+                    <Tab.Pane eventKey="notes" className='heigth-100'>
                       <div className='subject-posts-row'>
                         
                       </div>

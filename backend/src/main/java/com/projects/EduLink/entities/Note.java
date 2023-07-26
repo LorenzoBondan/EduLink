@@ -22,6 +22,7 @@ public class Note implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String text;
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -37,9 +38,10 @@ public class Note implements Serializable {
 	
 	public Note() {}
 
-	public Note(Long id, String text, LocalDateTime moment, User teacher, Subject subject) {
+	public Note(Long id, String title, String text, LocalDateTime moment, User teacher, Subject subject) {
 		super();
 		this.id = id;
+		this.title = title;
 		this.text = text;
 		this.moment = moment;
 		this.teacher = teacher;
@@ -52,6 +54,14 @@ public class Note implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getText() {

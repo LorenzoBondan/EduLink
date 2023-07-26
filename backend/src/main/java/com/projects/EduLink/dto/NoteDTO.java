@@ -11,6 +11,7 @@ public class NoteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	private String title;
 	private String text;
 	private LocalDateTime moment;
 	private Long teacherId;
@@ -20,15 +21,17 @@ public class NoteDTO implements Serializable {
 	
 	public NoteDTO(Note entity) {
 		this.id = entity.getId();
+		this.title = entity.getTitle();
 		this.text = entity.getText();
 		this.moment = entity.getMoment();
 		this.teacherId = entity.getTeacher().getId();
 		this.subjectId = entity.getSubject().getId();
 	}
 
-	public NoteDTO(Long id, String text, LocalDateTime moment, Long teacherId, Long subjectId) {
+	public NoteDTO(Long id, String title, String text, LocalDateTime moment, Long teacherId, Long subjectId) {
 		super();
 		this.id = id;
+		this.title = title;
 		this.text = text;
 		this.moment = moment;
 		this.teacherId = teacherId;
@@ -41,6 +44,14 @@ public class NoteDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getText() {

@@ -78,6 +78,7 @@ public class NoteService {
 	}
 	
 	private void copyDtoToEntity(NoteDTO dto, Note entity) {
+		entity.setTitle(dto.getTitle());
 		entity.setText(dto.getText());
 		entity.setMoment(dto.getMoment());
 		entity.setSubject(subjectRepository.getOne(dto.getSubjectId()));

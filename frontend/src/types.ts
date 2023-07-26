@@ -25,6 +25,7 @@ export type User = {
     subjectsSubscribedId: number[];
     subjectsTaughtId: number[];
     tests: Test[];
+    notes: Note[];
 }
 
 export type Role = {
@@ -67,4 +68,13 @@ export type Subject = {
     teacherId: number;
     students: User[];
     tests: Test[];
+    notes: Note[];
+}
+
+export type Note = {
+    id: number;
+    text: string;
+    moment: string;
+    subjectId: number;
+    teacherId: number;
 }

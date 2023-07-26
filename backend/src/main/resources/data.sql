@@ -39,4 +39,4 @@ INSERT INTO tb_user_tests (user_id, test_id) VALUES (1,3);
 INSERT INTO tb_user_tests (user_id, test_id) VALUES (1,4);
 INSERT INTO tb_user_tests (user_id, test_id) VALUES (5,2);
 
-INSERT INTO tb_note (text, moment, teacher_id, subject_id) VALUES ('First Note', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 3, 1);
+INSERT INTO tb_note (title, text, moment, teacher_id, subject_id) VALUES ('First Note', 'Hello students, this is the first note', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 3, 1);

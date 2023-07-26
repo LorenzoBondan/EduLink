@@ -28,7 +28,7 @@ ul {
 
 .base-card{
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, .10);
   background-color: rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(5px);

@@ -42,7 +42,7 @@ const Subjects = () => {
                 {hasAnyRoles(['ROLE_STUDENT']) && (
                     <div className='col-lg-4'>
                         <div className='subject-card base-card'>
-                            <h4>Your Subsribed Subjects</h4>
+                            <h4>Your Subjects</h4>
                             <div className='row'>
                                 <div className='col-lg-6'>
                                     {user?.subjectsSubscribedId.slice(0, Math.ceil(user.subjectsSubscribedId.length / 2)).map(subjectId => (
