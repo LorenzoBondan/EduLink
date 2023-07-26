@@ -1,0 +1,40 @@
+.subjects-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.subjects-canva-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.subject-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.subject-card h4{
+    width: 100%;
+    font-weight: 700;
+    text-align: left;
+    border-bottom: 1px solid #aeaeae;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.15rem;
+}
+
+@media(min-width:1200px){
+    .subjects-container{
+        min-height: calc(100vh - 95px);
+    }
+}
