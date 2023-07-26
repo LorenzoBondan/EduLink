@@ -11,6 +11,7 @@ import { Nav, Tab } from 'react-bootstrap';
 import { BiCommentDetail } from 'react-icons/bi';
 import { hasAnyRoles } from 'util/auth';
 import TestRow from './TestRow';
+import NoteCard from './NoteCard';
 
 type UrlParams = {
     subjectId: string;
@@ -92,7 +93,9 @@ const SubjectDetails = () => {
                   <Tab.Content id="slideInUp" className='heigth-100'>
                     <Tab.Pane eventKey="notes" className='heigth-100'>
                       <div className='subject-posts-row'>
-                        
+                        {subject?.notes.map(note => (
+                            <NoteCard note={note} key={note.id}/>
+                        ))}
                       </div>
                     </Tab.Pane>
                     {/* STUDENT */}

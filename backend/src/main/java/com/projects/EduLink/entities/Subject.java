@@ -47,7 +47,7 @@ public class Subject implements Serializable{
 	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
 	private List<Test> tests = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
 	private List<Note> notes = new ArrayList<>();
 	
 	public Subject() {}
@@ -111,6 +111,10 @@ public class Subject implements Serializable{
 
 	public List<Note> getNotes() {
 		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
 	}
 
 	@Override

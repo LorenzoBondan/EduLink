@@ -73,6 +73,7 @@ export type Subject = {
 
 export type Note = {
     id: number;
+    title: string;
     text: string;
     moment: string;
     subjectId: number;

@@ -12,15 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.projects.EduLink.dto.NoteDTO;
 import com.projects.EduLink.dto.SubjectDTO;
 import com.projects.EduLink.dto.TestDTO;
 import com.projects.EduLink.dto.UserDTO;
-import com.projects.EduLink.entities.Note;
 import com.projects.EduLink.entities.Subject;
 import com.projects.EduLink.entities.Test;
 import com.projects.EduLink.entities.User;
-import com.projects.EduLink.repositories.NoteRepository;
 import com.projects.EduLink.repositories.SubjectRepository;
 import com.projects.EduLink.repositories.TestRepository;
 import com.projects.EduLink.repositories.UserRepository;
@@ -38,9 +35,6 @@ public class SubjectService {
 	
 	@Autowired
 	private TestRepository testRepository;
-	
-	@Autowired
-	private NoteRepository noteRepository;
 
 	@Transactional(readOnly = true)
 	public Page<SubjectDTO> findAllPaged(Pageable pageable) {
@@ -103,9 +97,5 @@ public class SubjectService {
 			entity.getTests().add(test);
 		}
 		
-		for(NoteDTO noteDto : dto.getNotes()) {
-			Note note = noteRepository.getOne(noteDto.getId());
-			entity.getNotes().add(note);
-		}
 	}
 }
