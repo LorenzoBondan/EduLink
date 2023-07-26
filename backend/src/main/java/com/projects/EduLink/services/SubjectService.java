@@ -76,6 +76,7 @@ public class SubjectService {
 	private void copyDtoToEntity(SubjectDTO dto, Subject entity) {
 		entity.setName(dto.getName());
 		entity.setTeam(dto.getTeam());
+		entity.setImgUrl(dto.getImgUrl());
 		entity.setTeacher(userRepository.getOne(dto.getTeacherId()));
 	}
 }

@@ -20,8 +20,8 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (5, 1);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('First message', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 2, 1);
 
-INSERT INTO tb_subject (name, team, teacher_id) VALUES ('Math', '7ano 1', 2);
-INSERT INTO tb_subject (name, team, teacher_id) VALUES ('Physical', '7ano 1', 2);
+INSERT INTO tb_subject (name, team, teacher_id, img_Url) VALUES ('Math', '7th Grade 1', 2, 'https://nationaltoday.com/wp-content/uploads/2022/08/22-National-Math-Day.jpg');
+INSERT INTO tb_subject (name, team, teacher_id, img_Url) VALUES ('Physics', '7th Grade 1', 2, 'https://www.zdnet.com/a/img/resize/4bca2f788465d943b8a1298405cf0b2246f447cd/2022/01/12/9ee89c8b-8777-49da-af0b-df23d4302b9a/physics-concept.jpg?auto=webp&fit=crop&height=900&width=1200');
 
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (1, 1);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (1, 5);

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,8 @@ public class Subject implements Serializable{
 	private Long id;
 	private String name;
 	private String team;
+	@Column(columnDefinition = "TEXT")
+	private String imgUrl;
 	
 	@ManyToOne
     @JoinColumn(name = "teacher_id")
@@ -46,12 +49,13 @@ public class Subject implements Serializable{
 	
 	public Subject() {}
 
-	public Subject(Long id, String name, String team, User teacher) {
+	public Subject(Long id, String name, String team, String imgUrl, User teacher) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.team = team;
 		this.teacher = teacher;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -76,6 +80,14 @@ public class Subject implements Serializable{
 
 	public void setTeam(String team) {
 		this.team = team;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public User getTeacher() {
