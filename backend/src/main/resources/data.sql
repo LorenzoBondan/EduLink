@@ -29,12 +29,14 @@ INSERT INTO tb_subject_student (subject_id, student_id) VALUES (2, 1);
 
 INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 5.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
 INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 9.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
-INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Physical test 1', 10.0, 8.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-20T09:30:00', 2);
+INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 2', 10.0, 7.5, TIMESTAMP WITHOUT TIME ZONE '2023-08-19T08:15:00', 1);
+INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Physics test 1', 10.0, 8.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-20T09:30:00', 2);
 
 INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (1, 3);
 
 INSERT INTO tb_user_tests (user_id, test_id) VALUES (1,1);
 INSERT INTO tb_user_tests (user_id, test_id) VALUES (1,3);
+INSERT INTO tb_user_tests (user_id, test_id) VALUES (1,4);
 INSERT INTO tb_user_tests (user_id, test_id) VALUES (5,2);
 
-
+INSERT INTO tb_note (text, moment, teacher_id, subject_id) VALUES ('First Note', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 3, 1);
