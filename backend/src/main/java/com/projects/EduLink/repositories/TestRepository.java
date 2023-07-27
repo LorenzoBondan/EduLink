@@ -33,4 +33,10 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 			+ "obj.subject = :subject AND "
 			+ "UPPER(obj.name) LIKE UPPER(:name)")
 	Double getAvgScoreFromTest(Subject subject, String name);
+	
+	@Query("SELECT obj FROM Test obj WHERE "
+			+ "(:user MEMBER OF obj.students.parents) AND "
+			+ "(obj.subject = :subject) "
+			+ "ORDER BY obj.date DESC")
+	Page<Test> getTestsFromChildrenSubject(User user, Subject subject, Pageable pageable);
 }

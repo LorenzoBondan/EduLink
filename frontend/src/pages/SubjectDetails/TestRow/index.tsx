@@ -7,10 +7,9 @@ import { requestBackend } from "util/requests";
 type Props = {
     test: Test;
     subjectId: number;
-    subjectName: string;
 }
 
-const TestRow = ({test, subjectId, subjectName}: Props) => {
+const TestRow = ({test, subjectId}: Props) => {
 
     function removeSpacesFromString(inputString: string): string {
         return inputString.replace(/\s/g, '_');

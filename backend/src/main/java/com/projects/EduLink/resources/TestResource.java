@@ -39,6 +39,12 @@ public class TestResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping(value = "/subject/{subjectId}/children")
+	public ResponseEntity<Page<TestDTO>> findTestsFromChildrenSubject(@PathVariable Long subjectId, Pageable pageable){		
+		Page<TestDTO> list = service.findTestsFromChildrenSubject(subjectId, pageable);	
+		return ResponseEntity.ok().body(list);
+	}
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TestDTO> findById(@PathVariable Long id) {
 		TestDTO dto = service.findById(id);	

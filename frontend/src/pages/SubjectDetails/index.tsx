@@ -160,31 +160,39 @@ const SubjectDetails = () => {
                         ))}
                       </div>
                     </Tab.Pane>
-                    {/* STUDENT */}
-                    {hasAnyRoles(['ROLE_STUDENT']) && 
-                        <Tab.Pane eventKey="tests" className='heigth-100'>
-                            <div className='subject-posts-row'>
-                                <table className='tests-table'>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                            <th style={{textAlign:"center"}}>Score</th>
-                                            <th style={{textAlign:"center"}}>Points</th>
-                                            <th style={{textAlign:"center"}}>Class Max Score</th>
-                                            <th style={{textAlign:"center"}}>Class Min Score</th>
-                                            <th style={{textAlign:"center"}}>Class Average Score</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {subject && tests?.content.map(test => (
-                                            <TestRow test={test} subjectId={parseInt(subjectId)} subjectName={subject.name}/>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </Tab.Pane>
-                    }
+                    
+                    <Tab.Pane eventKey="tests" className='heigth-100'>
+                        <div className='subject-posts-row'>
+                            <table className='tests-table'>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Date</th>
+                                        <th style={{textAlign:"center"}}>Score</th>
+                                        <th style={{textAlign:"center"}}>Points</th>
+                                        <th style={{textAlign:"center"}}>Class Max Score</th>
+                                        <th style={{textAlign:"center"}}>Class Min Score</th>
+                                        <th style={{textAlign:"center"}}>Class Average Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {/* STUDENT */}
+                                    {hasAnyRoles(['ROLE_STUDENT']) && (
+                                        subject && tests?.content.map(test => (
+                                            <TestRow test={test} subjectId={parseInt(subjectId)}/>
+                                        ))
+                                    )}
+                                    {/* PARENT */}
+                                    {hasAnyRoles(['ROLE_PARENT']) && (
+                                        subject && tests?.content.map(test => (
+                                            <TestRow test={test} subjectId={parseInt(subjectId)}/>
+                                        ))
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </Tab.Pane>
+                    
                    </Tab.Content>
                 </Tab.Container>
             </div>
