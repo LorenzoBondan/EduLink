@@ -12,6 +12,7 @@ import { BiCommentDetail } from 'react-icons/bi';
 import { getTokenData, hasAnyRoles } from 'util/auth';
 import TestRow from './TestRow';
 import NoteCard from './NoteCard';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 type UrlParams = {
     subjectId: string;
@@ -82,6 +83,15 @@ const SubjectDetails = () => {
       getUser();
     }, [getUser]);
 
+    const amITheTeacher = () => {
+        if(user?.id === subject?.teacherId){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     return(
         <div className="subject-details-container">
             <div className='subject-details-first-container base-card'>
@@ -118,6 +128,11 @@ const SubjectDetails = () => {
                   <Tab.Content id="slideInUp" className='heigth-100'>
                     <Tab.Pane eventKey="notes" className='heigth-100'>
                       <div className='subject-posts-row'>
+                        {(amITheTeacher() || hasAnyRoles(['ROLE_ADMIN'])) && (
+                            <div className='subject-posts-button-container'>
+                                <button className='btn btn-primary'><AiOutlinePlus/> Add Note</button>
+                            </div>
+                        )}
                         {user && subject?.notes.map(note => (
                             <NoteCard note={note} userLogged={user} onDeleteOrEdit={getSubject} key={note.id}/>
                         ))}

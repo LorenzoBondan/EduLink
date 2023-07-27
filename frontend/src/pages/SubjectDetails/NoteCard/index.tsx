@@ -9,6 +9,7 @@ import { BiEdit } from "react-icons/bi";
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { hasAnyRoles } from "util/auth";
 
 type Props = {
     note: Note;
@@ -111,7 +112,7 @@ const NoteCard = ({note, userLogged, onDeleteOrEdit} : Props) => {
 
     return(
         <div className="note-card-container">
-            {!amITheAuthor() && 
+            {(amITheAuthor() || hasAnyRoles(['ROLE_ADMIN'])) &&  
                 <div className="note-card-buttons-container">
                     <BiEdit onClick={openModal}/>
                     <Modal 
