@@ -85,9 +85,13 @@
     width: 50%;
 }
 
+.top-navbar-buttons-container p{
+    margin-right: 0 !important;
+}
+
 .top-navbar-icon{
     font-size: 20px;
-    margin-right: 0px;
+    margin-right: 5px;
 }
 
 .top-navbar-icon:hover{
@@ -104,8 +108,8 @@
 
 .notification-badge {
     position: absolute;
-    top: 10px;
-    right: 188px;
+    top: 27px;
+    right: 248px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,7 +155,6 @@
 
     .top-navbar-icon{
         font-size: 24px;
-        margin-right: 5px;
     }
 }
 
@@ -234,11 +237,16 @@
     .top-navbar-buttons-container{
         display: flex;
         align-items: center;
+        justify-content: unset;
+    }
+
+    .top-navbar-item{
+        width: 20%;
     }
     
     .top-navbar-icon{
         font-size: 28px;
-        margin-right: 5px;
+        margin-right: 0;
     }
     
     .notification-badge {

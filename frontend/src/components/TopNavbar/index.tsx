@@ -103,23 +103,23 @@ const TopNavbar = () => {
                   </NavLink>
                   <div className='top-navbar-buttons-container'>
                     { hasAnyRoles(['ROLE_ADMIN']) && ( 
-                      <NavLink to="/admin" className="admin-nav-item">
+                      <NavLink to="/admin" className="admin-nav-item top-navbar-item">
                           <p data-tooltip-content="Admin" data-tooltip-id="top-navbar-tooltip"><MdOutlineAdminPanelSettings className='top-navbar-icon'/></p>
                       </NavLink>
                     )}
-                    <p onClick={() => openAndCloseNotifications()} data-tooltip-content="Notifications" data-tooltip-id="top-navbar-tooltip">
+                    <p onClick={() => openAndCloseNotifications()} className='top-navbar-item' data-tooltip-content="Notifications" data-tooltip-id="top-navbar-tooltip">
                       <IoIosNotificationsOutline className='top-navbar-icon' />
                       {user && user?.notifications.filter(notification => !notification.read).length > 0 && <span className='notification-badge'>{user?.notifications.filter(notification => !notification.read).length}</span>}
                     </p>
                     { hasAnyRoles(['ROLE_PARENT', 'ROLE_TEACHER', 'ROLE_ADMIN']) && ( 
-                    <NavLink to="/messages">
+                    <NavLink to="/messages" className='top-navbar-item'>
                         <p data-tooltip-content="Messages" data-tooltip-id="top-navbar-tooltip"><HiOutlineChatBubbleOvalLeft className='top-navbar-icon'/></p>
                     </NavLink>
                     )}
-                    <NavLink to="/subjects">
+                    <NavLink to="/subjects" className='top-navbar-item'>
                         <p data-tooltip-content="Subjects" data-tooltip-id="top-navbar-tooltip"><TbClipboardData className='top-navbar-icon'/></p>
                     </NavLink>
-                    <NavLink to="/" className="login-nav-item" onClick={handleLogoutClick}>
+                    <NavLink to="/" className="login-nav-item top-navbar-item" onClick={handleLogoutClick}>
                       <p data-tooltip-content="Logout" data-tooltip-id="top-navbar-tooltip"><HiLogout className='top-navbar-icon'/></p>
                     </NavLink>
                   </div>
