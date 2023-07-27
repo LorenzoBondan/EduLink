@@ -13,6 +13,8 @@ import { getTokenData, hasAnyRoles } from 'util/auth';
 import TestRow from './TestRow';
 import NoteCard from './NoteCard';
 import { AiOutlinePlus } from 'react-icons/ai';
+import Modal from 'react-modal';
+import AddNote from 'components/AddNote';
 
 type UrlParams = {
     subjectId: string;
@@ -92,6 +94,17 @@ const SubjectDetails = () => {
         }
     }
 
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal(){
+        setIsOpen(true);
+    }
+
+    function closeModal(){
+        setIsOpen(false);
+        getSubject();
+    }
+
     return(
         <div className="subject-details-container">
             <div className='subject-details-first-container base-card'>
@@ -130,7 +143,16 @@ const SubjectDetails = () => {
                       <div className='subject-posts-row'>
                         {(amITheTeacher() || hasAnyRoles(['ROLE_ADMIN'])) && (
                             <div className='subject-posts-button-container'>
-                                <button className='btn btn-primary'><AiOutlinePlus/> Add Note</button>
+                                <button className='btn btn-primary' onClick={openModal}><AiOutlinePlus/> Add Note</button>
+                                <Modal 
+                                    isOpen={modalIsOpen}
+                                    onRequestClose={closeModal}
+                                    contentLabel="Example Modal"
+                                    overlayClassName="modal-overlay"
+                                    className="modal-content"
+                                >
+                                {user && <AddNote onCancel={closeModal} subjectId={parseInt(subjectId)} userId={user?.id}/>}
+                                </Modal>
                             </div>
                         )}
                         {user && subject?.notes.map(note => (
