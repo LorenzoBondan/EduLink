@@ -202,11 +202,10 @@ public class TestService {
 		return Math.round(avgScore * 100.0) / 100.0;
 	}
 	
-	public Double getScoreFromTest(Long userId, Long subjectId, String name) {
+	public Double getScoreFromTest(Long userId, String name) {
 		User user = userRepository.getOne(userId);
-		Subject subject = subjectRepository.getOne(subjectId);
 		String newName = name.replace(' ', '_');
-		Double avgScore = repository.getScoreFromTest(user, subject, newName);
+		Double avgScore = repository.getScoreFromTest(user, newName);
 		return Math.round(avgScore * 100.0) / 100.0;
 	}
 }
