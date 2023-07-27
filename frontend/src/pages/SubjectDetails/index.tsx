@@ -70,7 +70,6 @@ const SubjectDetails = () => {
         }
     }, [subjectId]);
     
-
     useEffect(() => {
         getTests();
     }, [getTests]);
@@ -181,13 +180,17 @@ const SubjectDetails = () => {
                             <table className='tests-table'>
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th style={{textAlign:"center"}}>Score</th>
-                                        <th style={{textAlign:"center"}}>Points</th>
-                                        <th style={{textAlign:"center"}}>Class Max Score</th>
-                                        <th style={{textAlign:"center"}}>Class Min Score</th>
-                                        <th style={{textAlign:"center"}}>Class Average Score</th>
+                                        {hasAnyRoles(['ROLE_PARENT', 'ROLE_STUDENT']) && (
+                                            <>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th style={{textAlign:"center"}}>Score</th>
+                                            <th style={{textAlign:"center"}}>Points</th>
+                                            <th style={{textAlign:"center"}}>Class Max Score</th>
+                                            <th style={{textAlign:"center"}}>Class Min Score</th>
+                                            <th style={{textAlign:"center"}}>Class Average Score</th>
+                                            </>
+                                        )}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -201,6 +204,19 @@ const SubjectDetails = () => {
                                     {hasAnyRoles(['ROLE_PARENT']) && (
                                         subject && tests?.content.map(test => (
                                             <TestRow test={test} subjectId={parseInt(subjectId)}/>
+                                        ))
+                                    )}
+                                    {/* PARENT */}
+                                    {hasAnyRoles(['ROLE_TEACHER']) && (
+                                        subject?.tests.map(test => (
+                                            <div>
+                                                <h1>{test.name}</h1>
+                                                <h5>{test.score}</h5>
+                                                {test.studentsId.map(studentId => (
+                                                    <p>{studentId}</p>
+                                                ))}
+                                            </div>
+                                            
                                         ))
                                     )}
                                 </tbody>

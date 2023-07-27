@@ -64,6 +64,14 @@ public class TestService {
 		Page<Test> list = repository.getTestsFromChildrenSubject(me, subject, pageable);
 		return list.map(x -> new TestDTO(x));
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<TestDTO> findTestsFromStudentSubjectTeacher(Long userId, Long subjectId, Pageable pageable) {
+		User user = userRepository.getOne(userId);
+		Subject subject = subjectRepository.getOne(subjectId);
+		Page<Test> list = repository.getTestsFromStudentSubject(user, subject, pageable);
+		return list.map(x -> new TestDTO(x));
+	}
 
 	@Transactional(readOnly = true)
 	public TestDTO findById(Long id) {
