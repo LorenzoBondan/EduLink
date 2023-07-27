@@ -128,7 +128,7 @@ const NoteCard = ({note, userLogged, onDeleteOrEdit} : Props) => {
                                 <label htmlFor="">Title</label>
                                 <input 
                                     {...register("title", {
-                                    required: 'Campo obrigatório',
+                                    required: 'Required field',
                                     })}
                                     type="text"
                                     className={`form-control base-input ${errors.title ? 'is-invalid' : ''}`}
@@ -136,11 +136,11 @@ const NoteCard = ({note, userLogged, onDeleteOrEdit} : Props) => {
                                     name="title"
                                 />
                                 <label htmlFor="">Text</label>
-                                <input 
+                                <textarea 
+                                    rows={10}
                                     {...register("text", {
-                                    required: 'Campo obrigatório',
+                                    required: 'Required field',
                                     })}
-                                    type="text"
                                     className={`form-control base-input ${errors.text ? 'is-invalid' : ''}`}
                                     placeholder="Text"
                                     name="text"

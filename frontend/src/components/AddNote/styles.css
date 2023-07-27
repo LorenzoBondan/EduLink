@@ -1,0 +1,41 @@
+.add-note-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.add-note-form textarea{
+    height: auto !important;
+}
+
+.add-note-container h1{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+.margin-bottom-30{
+    margin-bottom: 30px;
+}
+
+.add-note-buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+    padding-top: 10px;
+    margin-top: 25px;
+}
+
+.add-note-buttons-container button{
+    width: 49%;
+}
+

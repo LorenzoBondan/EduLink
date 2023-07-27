@@ -48,8 +48,8 @@ const AddNote = ({onCancel, userId, subjectId} : Props) => {
     return(
         <div className='add-note-container'>
             <h1>Add Note</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='row post-crud-inputs-container'>
+            <form onSubmit={handleSubmit(onSubmit)} className='add-note-form'>
+                <div className='row add-note-inputs-container'>
                     <div className='margin-bottom-30'>
                         <label htmlFor="">Title</label>
                         <input 
@@ -65,9 +65,11 @@ const AddNote = ({onCancel, userId, subjectId} : Props) => {
                     </div>
                     <div className='margin-bottom-30'>
                         <label htmlFor="">Text</label>
-                        <input 
-                            {...register("text")}
-                            type="text"
+                        <textarea 
+                            rows={10}
+                            {...register("text", {
+                            required: 'Required field',
+                            })}
                             className={`form-control base-input ${errors.text ? 'is-invalid' : ''}`}
                             placeholder="Text"
                             name="text"
@@ -75,14 +77,14 @@ const AddNote = ({onCancel, userId, subjectId} : Props) => {
                         <div className='invalid-feedback d-block'>{errors.text?.message}</div>
                     </div>
                 </div>     
-                <div className='post-crud-buttons-container'>
+                <div className='add-note-buttons-container'>
                     <button 
-                        className='btn btn-outline-danger post-crud-buttons'
+                        className='btn btn-outline-danger add-note-button'
                         onClick={() => onCancel()}
                         >
                         CANCEL
                     </button>
-                    <button className='btn btn-primary text-white post-crud-buttons'>SAVE</button>
+                    <button className='btn btn-primary text-white add-note-button'>SAVE</button>
                 </div>
             </form>
         </div>
