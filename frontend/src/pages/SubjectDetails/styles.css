@@ -198,4 +198,10 @@
     .subject-details-container{
         min-height: calc(100vh - 95px);
     }
+
+    .subject-details-first-container{
+        min-height: calc(100vh - 95px);
+        margin-right: 20px;
+        justify-content: flex-start;
+    }
 }

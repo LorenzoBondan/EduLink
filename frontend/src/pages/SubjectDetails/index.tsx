@@ -122,7 +122,7 @@ const SubjectDetails = () => {
                     </div>
                     <div className='subject-info-item'>
                         <HiOutlineEnvelope/>
-                        <p>0</p>
+                        <p>{subject?.notes.length}</p>
                     </div>
                 </div>
                 <h3>Teacher</h3>

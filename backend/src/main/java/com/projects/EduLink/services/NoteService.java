@@ -1,5 +1,6 @@
 package com.projects.EduLink.services;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -14,7 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.projects.EduLink.dto.NoteDTO;
 import com.projects.EduLink.entities.Note;
+import com.projects.EduLink.entities.Notification;
+import com.projects.EduLink.entities.User;
 import com.projects.EduLink.repositories.NoteRepository;
+import com.projects.EduLink.repositories.NotificationRepository;
 import com.projects.EduLink.repositories.SubjectRepository;
 import com.projects.EduLink.repositories.UserRepository;
 import com.projects.EduLink.services.exceptions.DataBaseException;
@@ -31,6 +35,9 @@ public class NoteService {
 	
 	@Autowired
 	private SubjectRepository subjectRepository;
+	
+	@Autowired
+	private NotificationRepository notificationRepository;
 
 	@Transactional(readOnly = true)
 	public Page<NoteDTO> findAllPaged(Pageable pageable) {
@@ -49,6 +56,27 @@ public class NoteService {
 	public NoteDTO insert(NoteDTO dto) {
 		Note entity = new Note();
 		copyDtoToEntity(dto, entity);
+		
+		// send a notification for the students
+		for (User student : entity.getSubject().getStudents()) {
+			Notification notification = new Notification();
+			notification.setDescription("You have a new note in the subject " + entity.getSubject().getName() + ".");
+			LocalDateTime now = LocalDateTime.now();
+			notification.setMoment(now);
+			notification.setRead(false);
+			notification.setUser(student);
+			notification = notificationRepository.save(notification);
+			// send a notification for the parents
+			for(User parent : student.getParents()) {
+				Notification notification2 = new Notification();
+				notification2.setDescription("Your children " + student.getName() + " have a new note in the subject " + entity.getSubject().getName() + ".");
+				notification2.setMoment(now);
+				notification2.setRead(false);
+				notification2.setUser(parent);
+				notification2 = notificationRepository.save(notification2);
+			}
+		}
+		
 		entity = repository.save(entity);
 		return new NoteDTO(entity);
 	}
