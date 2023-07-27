@@ -45,16 +45,31 @@ const SubjectDetails = () => {
     const [tests, setTests] = useState<SpringPage<Test>>();
 
     const getTests = useCallback(() => {
-        const params : AxiosRequestConfig = {
-          method:"GET",
-          url: `/tests/subject/${subjectId}`,
-          withCredentials:true
+        if (hasAnyRoles(['ROLE_PARENT'])) {
+            const params = {
+                method: "GET",
+                url: `/tests/subject/${subjectId}/children`,
+                withCredentials: true
+            };
+            requestBackend(params)
+                .then(response => {
+                    setTests(response.data);
+                });
         }
-        requestBackend(params) 
-          .then(response => {
-            setTests(response.data);
-          })
-    }, [subjectId])
+    
+        if (hasAnyRoles(['ROLE_STUDENT'])) {
+            const params = {
+                method: "GET",
+                url: `/tests/subject/${subjectId}`,
+                withCredentials: true
+            };
+            requestBackend(params)
+                .then(response => {
+                    setTests(response.data);
+                });
+        }
+    }, [subjectId]);
+    
 
     useEffect(() => {
         getTests();
