@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import './styles.css';
 import { useEffect, useState, useCallback } from 'react';
-import { SpringPage, Subject, Test } from 'types';
+import { SpringPage, Subject, Test, User } from 'types';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import { FaUsers } from 'react-icons/fa';
@@ -9,7 +9,7 @@ import { HiOutlineDocumentText, HiOutlineEnvelope } from 'react-icons/hi2';
 import TeacherCard from './TeacherCard';
 import { Nav, Tab } from 'react-bootstrap';
 import { BiCommentDetail } from 'react-icons/bi';
-import { hasAnyRoles } from 'util/auth';
+import { getTokenData, hasAnyRoles } from 'util/auth';
 import TestRow from './TestRow';
 import NoteCard from './NoteCard';
 
@@ -57,6 +57,31 @@ const SubjectDetails = () => {
         getTests();
     }, [getTests]);
 
+    const [user, setUser] = useState<User | null>(null);
+
+    const getUser = useCallback(async () => {
+      try {
+        const email = getTokenData()?.user_name;
+  
+        if (email) {
+          const params: AxiosRequestConfig = {
+            method: "GET",
+            url: `/users/email/${email}`,
+            withCredentials: true,
+          };
+  
+          const response = await requestBackend(params);
+          setUser(response.data);
+        }
+      } catch (error) {
+        console.log("Error: " + error);
+      }
+    }, []);
+  
+    useEffect(() => {
+      getUser();
+    }, [getUser]);
+
     return(
         <div className="subject-details-container">
             <div className='subject-details-first-container base-card'>
@@ -93,8 +118,8 @@ const SubjectDetails = () => {
                   <Tab.Content id="slideInUp" className='heigth-100'>
                     <Tab.Pane eventKey="notes" className='heigth-100'>
                       <div className='subject-posts-row'>
-                        {subject?.notes.map(note => (
-                            <NoteCard note={note} key={note.id}/>
+                        {user && subject?.notes.map(note => (
+                            <NoteCard note={note} userLogged={user} onDeleteOrEdit={getSubject} key={note.id}/>
                         ))}
                       </div>
                     </Tab.Pane>

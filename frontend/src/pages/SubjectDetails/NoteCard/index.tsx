@@ -4,12 +4,19 @@ import { useEffect, useState, useCallback } from 'react';
 import { AxiosRequestConfig } from "axios";
 import { requestBackend } from "util/requests";
 import { convertDateTime } from "helpers";
+import { FaTrashAlt } from "react-icons/fa";
+import { BiEdit } from "react-icons/bi";
+import Modal from 'react-modal';
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 type Props = {
     note: Note;
+    userLogged: User;
+    onDeleteOrEdit: Function;
 }
 
-const NoteCard = ({note} : Props) => {
+const NoteCard = ({note, userLogged, onDeleteOrEdit} : Props) => {
 
     const [teacher, setTeacher] = useState<User>();
 
@@ -29,8 +36,124 @@ const NoteCard = ({note} : Props) => {
         getTeacher();
     }, [getTeacher]);
 
+    const amITheAuthor = () => {
+        if(userLogged.id === note.teacherId){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    const deleteNote = () => {
+    
+        if(!window.confirm("Are you sure that you want to delete the note?")){
+          return;
+        }
+    
+        const params : AxiosRequestConfig = {
+          method:"DELETE",
+          url: `/notes/${note.id}`,
+          withCredentials: true
+        }
+    
+        requestBackend(params).then(() => {
+            onDeleteOrEdit();
+        })
+    }
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal(){
+        setIsOpen(true);
+    }
+
+    function closeModal(){
+        setIsOpen(false);
+    }
+
+    const { register, handleSubmit, formState: {errors}, setValue } = useForm<Note>();
+
+    useEffect(() => {
+        if(note){
+            requestBackend({url:`/notes/${note.id}`, withCredentials:true})
+                .then((response) => {
+                    const note = response.data as Note;
+
+                    setValue('title', note.title);
+                    setValue('text', note.text);
+                    setValue('teacherId', note.teacherId);
+                    setValue('subjectId', note.subjectId);
+                    setValue('moment', note.moment);
+                })
+            }
+    }, [note, setValue]);
+
+    const editNote = (formData : Note) => {
+
+        const params : AxiosRequestConfig = {
+            method:"PUT",
+            url: `/notes/${note.id}`,
+            withCredentials:true,
+            data: formData
+          }
+          requestBackend(params) 
+            .then(response => {
+                console.log(response.data);
+                toast.success("Note edited!");
+                closeModal();
+                onDeleteOrEdit();
+            })
+            .catch(() => {
+                toast.error('Error');
+            })
+    }
+
     return(
         <div className="note-card-container">
+            {!amITheAuthor() && 
+                <div className="note-card-buttons-container">
+                    <BiEdit onClick={openModal}/>
+                    <Modal 
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        contentLabel="Example Modal"
+                        overlayClassName="modal-overlay"
+                        className="modal-content"
+                    >
+                        <form onSubmit={handleSubmit(editNote)} className="edit-note-form">
+                            <h4><BiEdit/> Edit Note</h4>
+                            <div className="edit-note-input-container">
+                                <label htmlFor="">Title</label>
+                                <input 
+                                    {...register("title", {
+                                    required: 'Campo obrigatório',
+                                    })}
+                                    type="text"
+                                    className={`form-control base-input ${errors.title ? 'is-invalid' : ''}`}
+                                    placeholder="Title"
+                                    name="title"
+                                />
+                                <label htmlFor="">Text</label>
+                                <input 
+                                    {...register("text", {
+                                    required: 'Campo obrigatório',
+                                    })}
+                                    type="text"
+                                    className={`form-control base-input ${errors.text ? 'is-invalid' : ''}`}
+                                    placeholder="Text"
+                                    name="text"
+                                />
+                            </div>
+                            <div className="edit-note-buttons">
+                                <button onClick={closeModal} className="btn">Close</button>
+                                <button className="btn">Submit</button>
+                            </div>
+                        </form>
+                    </Modal>
+                    <FaTrashAlt onClick={() => deleteNote()}/>
+                </div>  
+            }
             <div className="note-card-teacher-container">
                 <img src={teacher?.imgUrl} alt="" />
             </div>

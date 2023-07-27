@@ -10,6 +10,23 @@
     backdrop-filter: blur(100px);
 }
 
+.note-card-buttons-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+}
+
+.note-card-buttons-container svg{
+    color: #2a2c2e86;
+}
+
+.note-card-buttons-container svg:hover{
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
 .note-card-teacher-container{
     display: flex;
     flex-direction: column;
@@ -31,7 +48,7 @@
     align-items: flex-start;
     justify-content: center;
     height: 100%;
-    width: 70%;
+    width: 65%;
 }
 
 .note-card-content-container h5{
