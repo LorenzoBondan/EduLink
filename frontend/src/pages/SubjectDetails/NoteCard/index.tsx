@@ -122,33 +122,37 @@ const NoteCard = ({note, userLogged, onDeleteOrEdit} : Props) => {
                         overlayClassName="modal-overlay"
                         className="modal-content"
                     >
-                        <form onSubmit={handleSubmit(editNote)} className="edit-note-form">
-                            <h4><BiEdit/> Edit Note</h4>
-                            <div className="edit-note-input-container">
-                                <label htmlFor="">Title</label>
-                                <input 
-                                    {...register("title", {
-                                    required: 'Required field',
-                                    })}
-                                    type="text"
-                                    className={`form-control base-input ${errors.title ? 'is-invalid' : ''}`}
-                                    placeholder="Title"
-                                    name="title"
-                                />
-                                <label htmlFor="">Text</label>
-                                <textarea 
-                                    rows={10}
-                                    {...register("text", {
-                                    required: 'Required field',
-                                    })}
-                                    className={`form-control base-input ${errors.text ? 'is-invalid' : ''}`}
-                                    placeholder="Text"
-                                    name="text"
-                                />
+                        <form onSubmit={handleSubmit(editNote)} className="add-note-form">
+                            <h1><BiEdit/> Edit Note</h1>
+                            <div className="row add-note-inputs-container">
+                                <div className='margin-bottom-30'>
+                                    <label htmlFor="">Title</label>
+                                    <input 
+                                        {...register("title", {
+                                        required: 'Required field',
+                                        })}
+                                        type="text"
+                                        className={`form-control base-input ${errors.title ? 'is-invalid' : ''}`}
+                                        placeholder="Title"
+                                        name="title"
+                                    />
+                                </div>
+                                <div className='margin-bottom-30'>
+                                    <label htmlFor="">Text</label>
+                                    <textarea 
+                                        rows={10}
+                                        {...register("text", {
+                                        required: 'Required field',
+                                        })}
+                                        className={`form-control base-input ${errors.text ? 'is-invalid' : ''}`}
+                                        placeholder="Text"
+                                        name="text"
+                                    />
+                                </div>
                             </div>
-                            <div className="edit-note-buttons">
-                                <button onClick={closeModal} className="btn">Close</button>
-                                <button className="btn">Submit</button>
+                            <div className="add-note-buttons-container">
+                                <button onClick={closeModal} className="btn btn-outline-danger add-note-button">Close</button>
+                                <button className="btn btn-primary text-white add-note-button">Submit</button>
                             </div>
                         </form>
                     </Modal>

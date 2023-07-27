@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import { toast } from 'react-toastify';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 type Props = {
     onCancel: Function;
@@ -47,8 +48,8 @@ const AddNote = ({onCancel, userId, subjectId} : Props) => {
 
     return(
         <div className='add-note-container'>
-            <h1>Add Note</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='add-note-form'>
+                <h1><AiOutlinePlus/> Add Note</h1>
                 <div className='row add-note-inputs-container'>
                     <div className='margin-bottom-30'>
                         <label htmlFor="">Title</label>

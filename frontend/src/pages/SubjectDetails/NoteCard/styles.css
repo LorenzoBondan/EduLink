@@ -77,3 +77,6 @@
     color: #6B7780;
 }
 
+.edit-note-form textarea{
+    height: auto !important;
+}
