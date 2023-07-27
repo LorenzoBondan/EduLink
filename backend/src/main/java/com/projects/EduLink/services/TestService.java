@@ -201,4 +201,12 @@ public class TestService {
 		Double avgScore = repository.getAvgScoreFromTest(subject, newName);
 		return Math.round(avgScore * 100.0) / 100.0;
 	}
+	
+	public Double getScoreFromTest(Long userId, Long subjectId, String name) {
+		User user = userRepository.getOne(userId);
+		Subject subject = subjectRepository.getOne(subjectId);
+		String newName = name.replace(' ', '_');
+		Double avgScore = repository.getScoreFromTest(user, subject, newName);
+		return Math.round(avgScore * 100.0) / 100.0;
+	}
 }

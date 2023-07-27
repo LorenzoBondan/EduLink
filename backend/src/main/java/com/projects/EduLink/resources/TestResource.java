@@ -98,4 +98,10 @@ public class TestResource {
 		return minScore;
 	}
 	
+	@GetMapping(value = "/score/{subjectId}/{name}/{userId}")
+	public Double findScore(@PathVariable Long userId, @PathVariable Long subjectId, @PathVariable String name)	{		
+		Double score = service.getScoreFromTest(userId, subjectId, name);	
+		return score;
+	}
+	
 }

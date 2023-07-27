@@ -39,4 +39,10 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 			+ "(obj.subject = :subject) "
 			+ "ORDER BY obj.date DESC")
 	Page<Test> getTestsFromChildrenSubject(User user, Subject subject, Pageable pageable);
+	
+	@Query("SELECT obj.score FROM Test obj WHERE "
+			+ "(:user MEMBER OF obj.students) AND "
+			+ "obj.subject = :subject AND "
+			+ "UPPER(obj.name) LIKE UPPER(:name)")
+	Double getScoreFromTest(User user, Subject subject, String name);
 }

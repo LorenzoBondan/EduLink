@@ -15,6 +15,7 @@ import NoteCard from './NoteCard';
 import { AiOutlinePlus } from 'react-icons/ai';
 import Modal from 'react-modal';
 import AddNote from 'components/AddNote';
+import TeacherTestRow from './TeacherTestRow';
 
 type UrlParams = {
     subjectId: string;
@@ -119,6 +120,10 @@ const SubjectDetails = () => {
         getSubject();
     }
 
+    // Convert the list to a Set to eliminate duplicates based on 'name' property.
+    const uniqueTestsSet = new Set(subject?.tests.map(test => test.name));
+    const uniqueTestsArray = Array.from(uniqueTestsSet);
+
     return(
         <div className="subject-details-container">
             <div className='subject-details-first-container base-card'>
@@ -191,6 +196,14 @@ const SubjectDetails = () => {
                                             <th style={{textAlign:"center"}}>Class Average Score</th>
                                             </>
                                         )}
+                                        {hasAnyRoles(['ROLE_TEACHER']) && (
+                                            <>
+                                            <th>Name</th>
+                                            {uniqueTestsArray.map(test => (
+                                                <th>{test}</th>
+                                            ))}
+                                            </>
+                                        )}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -208,15 +221,8 @@ const SubjectDetails = () => {
                                     )}
                                     {/* PARENT */}
                                     {hasAnyRoles(['ROLE_TEACHER']) && (
-                                        subject?.tests.map(test => (
-                                            <div>
-                                                <h1>{test.name}</h1>
-                                                <h5>{test.score}</h5>
-                                                {test.studentsId.map(studentId => (
-                                                    <p>{studentId}</p>
-                                                ))}
-                                            </div>
-                                            
+                                        subject?.students.map(student => (
+                                            <TeacherTestRow subjectId={parseInt(subjectId)} user={student} key={student.id}/>
                                         ))
                                     )}
                                 </tbody>
