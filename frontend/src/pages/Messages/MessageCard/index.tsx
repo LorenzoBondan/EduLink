@@ -5,7 +5,7 @@ import { getTokenData } from 'util/auth';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import { useCallback, useEffect, useState } from 'react';
-import { BsCheck2All, BsFillTrash3Fill } from 'react-icons/bs';
+import { BsCheck2All, BsChevronDown, BsChevronUp, BsFillTrash3Fill } from 'react-icons/bs';
 
 type Props = {
   message: Message;
@@ -88,9 +88,29 @@ const MessageCard = ({message, onDelete} : Props) => {
             }
         }
     }, [user, iAmTheAuthor, message, updateReadStatus]);
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+    };
     
     return(
         <div className={iAmTheAuthor() ? "message-card-container" : "message-card-container-author"}>
+                        <div className='message-card-top-container'>
+                {iAmTheAuthor() && 
+                    <div className="options-menu">
+                        <div className="menu-arrow" onClick={toggleMenu}>
+                            <i>{isMenuOpen ? <BsChevronUp/> : <BsChevronDown/>}</i>
+                        </div>
+                        {isMenuOpen && (
+                            <div className="menu-items">
+                                <div className="menu-item" onClick={() => handleDeleteMessage()}>Delete</div>
+                            </div>
+                        )}
+                  </div>
+                }
+            </div>
             <div className='message-card-content'>
                 <p>{message.text}</p>
                 <div className='message-card-author-bottom'>
@@ -100,11 +120,7 @@ const MessageCard = ({message, onDelete} : Props) => {
                     )}
                 </div>
             </div>
-            <div className='message-card-top-container'>
-                {iAmTheAuthor() && 
-                    <BsFillTrash3Fill onClick={() => handleDeleteMessage()}/>
-                }
-            </div>
+
         </div>
     );
 }
