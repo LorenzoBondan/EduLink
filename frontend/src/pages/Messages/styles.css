@@ -15,7 +15,7 @@
     width: 80%;
 }
 
-.message-card-top-container{
+.message-card-top-nav-container{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,18 +23,20 @@
     height: 50px;
     width: 100%;
     padding: 10px;
-    background-color: yellowgreen;
+    background-color: #202C33;
+    margin-bottom: 0 !important;
 }
 
-.message-card-top-container img{
+.message-card-top-nav-container img{
     border-radius: 50%;
     height: 40px;
     width: 40px;
 }
 
-.message-card-top-container h5{
+.message-card-top-nav-container h5{
     margin: 0 5px;
     font-size: 0.95rem;
+    color: #fff;
 }
 
 .message-card-content-container{
@@ -51,11 +53,12 @@
     overflow-y: scroll;
     height: 80%;
     width: 100%;
-    background-color: aqua !important;
+    background-color: #f3f2f2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    padding: 10px;
 }
 
 .message-card-input-container{
@@ -66,7 +69,7 @@
     padding: 10px;
     width: 100%;
     height: 20%;
-    background-color: blue;
+    background-color: #fff;
 }
 
 .message-card-input-container form{

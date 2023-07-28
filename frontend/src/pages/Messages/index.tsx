@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
@@ -7,6 +7,7 @@ import { Message, SpringPage, User } from 'types';
 import { getTokenData } from 'util/auth';
 import { useForm } from 'react-hook-form';
 import { AiOutlineSend } from 'react-icons/ai';
+import MessageCard from './MessageCard';
 
 type UrlParams = {
     receiverUserId: string;
@@ -103,10 +104,20 @@ const Messages = () => {
       }
     };
 
+    // scroll to limit down
+    const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const container = messagesContainerRef.current;
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      }, [messages]);
+
     return(
         <div className="messages-container">
             <div className='messages-card'>
-                <div className='message-card-top-container'>
+                <div className='message-card-top-nav-container'>
                     <img src={receiverUser?.imgUrl} alt="" />
                     <h5>{receiverUser?.name}</h5>
                     {receiverUser?.roles.map(role => (
@@ -114,8 +125,10 @@ const Messages = () => {
                     ))}
                 </div>
                 <div className='message-card-content-container'>
-                    <div className='message-card-messages-container'>
-                        
+                    <div className='message-card-messages-container' ref={messagesContainerRef}>
+                        {messages?.content.map(message => (
+                            <MessageCard message={message} onDelete={getMessages} key={message.id}/>
+                        ))}
                     </div>
                     <div className='message-card-input-container'>
                         <form onSubmit={handleSubmit(onSubmit)}>
