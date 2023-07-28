@@ -28,10 +28,33 @@ const ChatCard = ({userId} : Props) => {
         getUser();
     }, [getUser]);
 
+    const [unreadMessages, setUnreadMessages] = useState<number>();
+
+    const getUnreadMessages = useCallback(() => {
+        const params : AxiosRequestConfig = {
+          method:"GET",
+          url: `/messages/${userId}/unread`,
+          withCredentials:true
+        }
+        requestBackend(params) 
+          .then(response => {
+            setUnreadMessages(response.data);
+          })
+    }, [userId])
+
+    useEffect(() => {
+        getUnreadMessages();
+    }, [getUnreadMessages]);
+
     return(
-        <div className='chat-card-container base-card'>
-            <img src={user?.imgUrl} alt="" />
-            <h3>{user?.name}</h3>
+        <div className='chat-card-container'>
+            <div className='chat-card-first-container'>
+                <img src={user?.imgUrl} alt="" />
+                <h3>{user?.name}</h3>
+            </div>
+            <div className='chat-card-second-container'>
+                <p className='unread-messages-badge'>{unreadMessages}</p>
+            </div>
         </div>
     );
 }

@@ -39,7 +39,9 @@ const Chats = () => {
     const uniqueAuthorsSet = new Set<number>();
 
     allMessages && allMessages.forEach((message) => {
-    uniqueAuthorsSet.add(message.senderId);
+        if (message.senderId !== user.id) {
+            uniqueAuthorsSet.add(message.senderId);
+        }
     });
 
     const uniqueAuthorsIds: number[] = Array.from(uniqueAuthorsSet);
