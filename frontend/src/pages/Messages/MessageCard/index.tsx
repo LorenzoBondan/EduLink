@@ -39,14 +39,14 @@ const MessageCard = ({message, onDelete} : Props) => {
       getUser();
     }, [getUser]);
 
-    const iAmTheAuthor = () => {
+    const iAmTheAuthor = useCallback(() => {
         if(message.senderId === user?.id){
             return true;
         }
         else{
             return false;
         }
-    }
+    }, [message.senderId, user])
 
     const handleDeleteMessage = useCallback(() => {
         if(!window.confirm(`Are you sure that you want to delete this message?`)){
@@ -80,6 +80,32 @@ const MessageCard = ({message, onDelete} : Props) => {
     useEffect(() => {
         getSenderUser();
       }, [getSenderUser]);
+
+      const updateReadStatus = useCallback(() => {
+        const params : AxiosRequestConfig = {
+          method:"PUT",
+          url: `/messages/${message.id}/read`,
+          withCredentials:true
+        }
+        try{
+        requestBackend(params) 
+          .then(response => {
+            onDelete();
+          })
+        }
+        catch(error){
+            console.log(error);
+        }
+    }, [message.id, onDelete])
+
+    // read the message
+    useEffect(() => {
+        if(user){
+            if(!iAmTheAuthor() && !message.read){
+                updateReadStatus();
+            }
+        }
+    }, [user, iAmTheAuthor, message, updateReadStatus]);
     
     return(
         <div className={iAmTheAuthor() ? "message-card-container" : "message-card-container-author"}>
@@ -103,7 +129,9 @@ const MessageCard = ({message, onDelete} : Props) => {
             </div>
             <div className='message-card-content'>
                 <p>{message.text}</p>
-                {iAmTheAuthor() && (message.read ? <BsCheck2All style={{color:"green"}}/> : <BsCheck2All style={{color:"gray"}}/>)}
+                {iAmTheAuthor() && (
+                    message.read ? <BsCheck2All style={{ color: 'green' }} /> : <BsCheck2All style={{ color: 'gray' }} />
+                )}
             </div>
         </div>
     );
