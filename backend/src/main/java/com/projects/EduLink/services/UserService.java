@@ -172,9 +172,9 @@ public class UserService implements UserDetailsService {
 			entity.getSubjectsTaught().add(subject);
 		}
 		
-		for (TestDTO testDto : dto.getTests()) {
-			Test test = testRepository.getOne(testDto.getId());
-			entity.getTests().add(test);
+		for (TestDTO testDto : dto.getUserTests()) {
+			Test t = testRepository.getOne(testDto.getId());
+			entity.getUserTests().add(t);
 		}
 		
 		for (NoteDTO noteDto : dto.getNotes()) {

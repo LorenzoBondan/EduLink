@@ -69,10 +69,10 @@ public class User implements UserDetails, Serializable{
 	private Set<Subject> subjectsSubscribed = new HashSet<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_user_tests",
+	@JoinTable(name = "tb_user_test",
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "test_id"))
-	private Set<Test> tests = new HashSet<>();
+	private Set<Test> userTests = new HashSet<>();
 	
 	@OneToMany(mappedBy = "teacher", fetch = FetchType.EAGER)
 	private List<Subject> subjectsTaught = new ArrayList<>();
@@ -156,8 +156,8 @@ public class User implements UserDetails, Serializable{
 		return subjectsSubscribed;
 	}
 
-	public Set<Test> getTests() {
-		return tests;
+	public Set<Test> getUserTests() {
+		return userTests;
 	}
 
 	public List<Subject> getSubjectsTaught() {

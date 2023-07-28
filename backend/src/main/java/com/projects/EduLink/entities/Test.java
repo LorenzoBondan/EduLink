@@ -2,9 +2,9 @@ package com.projects.EduLink.entities;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,8 +34,8 @@ public class Test implements Serializable{
     @JoinColumn(name = "subject_id")
 	private Subject subject;
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "tests")
-	private List<User> students = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "userTests")
+	private Set<User> students = new HashSet<>();
 	
 	public Test() {}
 
@@ -97,7 +97,7 @@ public class Test implements Serializable{
 		this.subject = subject;
 	}
 
-	public List<User> getStudents() {
+	public Set<User> getStudents() {
 		return students;
 	}
 

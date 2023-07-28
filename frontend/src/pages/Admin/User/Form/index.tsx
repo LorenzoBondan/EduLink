@@ -36,6 +36,7 @@ const Form = () => {
                     setValue('messagesSent', user.messagesSent);
                     setValue('parentsId', user.parentsId);
                     setValue('subjectsSubscribedId', user.subjectsSubscribedId);
+                    setValue('userTests', user.userTests);
                 })
         }
         

@@ -84,7 +84,6 @@ public class TestService {
 	public TestDTO insert(TestDTO dto) {
 		Test entity = new Test();
 		copyDtoToEntity(dto, entity);
-		entity = repository.save(entity);
 		
 		//send a notification to the students
 		for(User student : entity.getStudents()) {
@@ -109,6 +108,7 @@ public class TestService {
 				notification = notificationRepository.save(notification);
 			}
 		}
+		entity = repository.save(entity);
 		
 		return new TestDTO(entity);
 	}
@@ -175,6 +175,7 @@ public class TestService {
 		entity.setScore(dto.getScore());
 		entity.setSubject(subjectRepository.getOne(dto.getSubjectId()));
 		
+		entity.getStudents().clear();
 		for(Long studentId : dto.getStudentsId()) {
 			User student = userRepository.getOne(studentId);
 			entity.getStudents().add(student);

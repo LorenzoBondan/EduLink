@@ -1,7 +1,10 @@
 package com.projects.EduLink.repositories;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -44,4 +47,7 @@ public interface TestRepository extends JpaRepository<Test,Long>{
 			+ "(:user MEMBER OF obj.students) AND "
 			+ "UPPER(obj.name) LIKE UPPER(:name)")
 	Double getScoreFromTest(User user, String name);
+	
+	@EntityGraph(attributePaths = "students")
+    Optional<Test> findById(Long id);
 }

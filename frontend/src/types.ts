@@ -24,7 +24,7 @@ export type User = {
     messagesReceived: Message[];
     subjectsSubscribedId: number[];
     subjectsTaughtId: number[];
-    tests: Test[];
+    userTests: Test[];
     notes: Note[];
 }
 

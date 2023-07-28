@@ -90,6 +90,8 @@
 .subject-details-second-container .tab-content{
     width: 100%;
     padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .subject-details-second-container svg{
@@ -135,6 +137,8 @@
 
 .subject-posts-row, .subject-posts-button-container{
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .subject-posts-button-container{
@@ -160,6 +164,8 @@
 .tests-table{
     width: 100%;
     border-spacing: 0; /*borda contínua entre os elementos */
+    display: flex;
+    flex-direction: column;
 }
 
 .tests-table thead th {

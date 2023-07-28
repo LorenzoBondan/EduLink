@@ -46,13 +46,6 @@ const Routes = () => {
                                 <SubjectDetails/>
                             </Route>
 
-                            <Route path="/disponibleExchanges" exact>
-                                
-                            </Route>
-
-                            <Route path="/profile" exact>
-                                
-                            </Route>
                         </Switch>
                     )}
                 </Switch>
