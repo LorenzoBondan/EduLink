@@ -206,7 +206,7 @@ const SubjectDetails = () => {
                                         )}
                                     </tr>
                                 </thead>
-                                <tbody style={{width:"100%", display:"flex", flexDirection:"column"}}>
+                                <tbody>
                                     {/* STUDENT */}
                                     {hasAnyRoles(['ROLE_STUDENT']) && (
                                         subject && tests?.content.map(test => (
