@@ -36,7 +36,7 @@ const TeacherCard = ({teacherId}: Props) => {
                 <img src={teacher?.imgUrl} alt="" />
                 <h4>{teacher?.name}</h4>
             </div>
-            {!hasAnyRoles(['ROLE_PARENT', 'ROLE_ADMIN']) && 
+            {hasAnyRoles(['ROLE_PARENT', 'ROLE_ADMIN']) && 
                 <div className='teacher-card-second-container'>
                     <BsEnvelopePlus/>
                 </div>
