@@ -63,25 +63,7 @@ const MessageCard = ({message, onDelete} : Props) => {
         })
     }, [message.id ,onDelete]);
 
-    const [senderUser, setSenderUser] = useState<User>();
-
-    const getSenderUser = useCallback(() => {
-        const params : AxiosRequestConfig = {
-          method:"GET",
-          url: `/users/${message.senderId}`,
-          withCredentials:true
-        }
-        requestBackend(params) 
-          .then(response => {
-            setSenderUser(response.data);
-          })
-    }, [message])
-
-    useEffect(() => {
-        getSenderUser();
-      }, [getSenderUser]);
-
-      const updateReadStatus = useCallback(() => {
+    const updateReadStatus = useCallback(() => {
         const params : AxiosRequestConfig = {
           method:"PUT",
           url: `/messages/${message.id}/read`,
@@ -109,29 +91,19 @@ const MessageCard = ({message, onDelete} : Props) => {
     
     return(
         <div className={iAmTheAuthor() ? "message-card-container" : "message-card-container-author"}>
-            <div className='message-card-top-container'>
-                <div className='message-card-image'>
-                    <img src={senderUser?.imgUrl} alt="" /> 
-                </div>
-                <div className='message-card-author'>
-                    <div className='message-card-author-content'>
-                        <h6>{senderUser?.name}</h6>
-                        <div className='message-card-author-bottom'>
-                            <p>{convertDateTime(message.moment)}</p>
-                        </div>
-                    </div>
-                    {iAmTheAuthor() && 
-                        <div className='message-card-buttons'>
-                            <BsFillTrash3Fill onClick={() => handleDeleteMessage()}/>
-                        </div>
-                    }
-                </div>
-            </div>
             <div className='message-card-content'>
                 <p>{message.text}</p>
-                {iAmTheAuthor() && (
-                    message.read ? <BsCheck2All style={{ color: '#0D7DF0' }} /> : <BsCheck2All style={{ color: '#ACB5A0' }} />
-                )}
+                <div className='message-card-author-bottom'>
+                    <p>{convertDateTime(message.moment)}</p> 
+                    {iAmTheAuthor() && (
+                        message.read ? <BsCheck2All style={{ color: '#0D7DF0' }} /> : <BsCheck2All style={{ color: '#ACB5A0' }} />
+                    )}
+                </div>
+            </div>
+            <div className='message-card-top-container'>
+                {iAmTheAuthor() && 
+                    <BsFillTrash3Fill onClick={() => handleDeleteMessage()}/>
+                }
             </div>
         </div>
     );
