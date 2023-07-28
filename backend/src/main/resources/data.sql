@@ -18,7 +18,8 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (4, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (5, 1);
 
-INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('First message', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 2, 1);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 3, 4);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', false, 4, 3);
 
 INSERT INTO tb_subject (name, team, teacher_id, img_Url) VALUES ('Math', '7th Grade 1', 2, 'https://nationaltoday.com/wp-content/uploads/2022/08/22-National-Math-Day.jpg');
 INSERT INTO tb_subject (name, team, teacher_id, img_Url) VALUES ('Physics', '7th Grade 1', 2, 'https://www.zdnet.com/a/img/resize/4bca2f788465d943b8a1298405cf0b2246f447cd/2022/01/12/9ee89c8b-8777-49da-af0b-df23d4302b9a/physics-concept.jpg?auto=webp&fit=crop&height=900&width=1200');

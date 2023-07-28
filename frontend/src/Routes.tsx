@@ -46,6 +46,10 @@ const Routes = () => {
                                 <SubjectDetails/>
                             </Route>
 
+                            <Route path="/messages/:currentUserId/:receiverUserId" exact>
+                                
+                            </Route>
+
                         </Switch>
                     )}
                 </Switch>
