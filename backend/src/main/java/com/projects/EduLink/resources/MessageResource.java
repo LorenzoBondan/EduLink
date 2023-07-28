@@ -1,6 +1,7 @@
 package com.projects.EduLink.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -56,6 +57,12 @@ public class MessageResource {
 	public Integer unreadMessagesBySenderAndReceiver(@PathVariable Long receiverId) {
 		Integer unreadMessages = service.messagesUnreadBySenderAndReceiver(receiverId);
 		return unreadMessages;
+	}
+	
+	@GetMapping(value = "/{receiverId}/lastMessage")
+	public ResponseEntity<List<MessageDTO>> findLastMessage(@PathVariable Long receiverId, Pageable pageable) {
+		List<MessageDTO> page = service.findLatestMessage(receiverId, pageable);
+		return ResponseEntity.ok().body(page);
 	}
 
 }

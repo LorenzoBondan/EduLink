@@ -1,6 +1,7 @@
 package com.projects.EduLink.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -96,6 +97,15 @@ public class MessageService {
 		
 		Integer unreadMessages = repository.getUnreadMessagesBySenderAndReceiver(user, receiver);
 		return unreadMessages;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<MessageDTO> findLatestMessage(Long receiverId, Pageable pageable){
+		User user = authService.authenticated();
+		User receiver = userRepository.getOne(receiverId);
+		List<Message> messages = repository.findLatestMessage(user, receiver, PageRequest.of(0, 1));
+		List<MessageDTO> messagesDto = messages.stream().map(MessageDTO::new).collect(Collectors.toList());
+		return messagesDto;
 	}
 	
 }
