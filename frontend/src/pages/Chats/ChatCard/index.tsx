@@ -51,6 +51,9 @@ const ChatCard = ({userId} : Props) => {
             <div className='chat-card-first-container'>
                 <img src={user?.imgUrl} alt="" />
                 <h3>{user?.name}</h3>
+                {user?.roles.map(role => (
+                  <p className='user-role-badge' key={role.id}>{role.authority.substring(5)}</p>
+                ))}
             </div>
             {unreadMessages && unreadMessages > 0 && 
                 <div className='chat-card-second-container'>
