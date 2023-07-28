@@ -78,4 +78,12 @@ public class MessageService {
 		}
 	}
 	
+	@Transactional(readOnly = true)
+	public Integer messagesUnreadBySenderAndReceiver(Long receiverId){
+		User user = authService.authenticated();
+		User receiver = userRepository.getOne(receiverId);
+		Integer unreadMessages = repository.getUnreadMessagesBySenderAndReceiver(user, receiver);
+		return unreadMessages;
+	}
+	
 }

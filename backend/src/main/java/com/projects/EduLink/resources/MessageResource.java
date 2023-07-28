@@ -51,5 +51,11 @@ public class MessageResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@GetMapping(value = "/{receiverId}/unread")
+	public Integer unreadMessagesBySenderAndReceiver(@PathVariable Long receiverId) {
+		Integer unreadMessages = service.messagesUnreadBySenderAndReceiver(receiverId);
+		return unreadMessages;
+	}
 
 }
