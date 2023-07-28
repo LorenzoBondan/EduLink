@@ -3,6 +3,8 @@ package com.projects.EduLink.services;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import com.projects.EduLink.entities.Message;
 import com.projects.EduLink.entities.User;
 import com.projects.EduLink.repositories.MessageRepository;
 import com.projects.EduLink.repositories.UserRepository;
+import com.projects.EduLink.services.exceptions.DataBaseException;
 import com.projects.EduLink.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -61,6 +64,18 @@ public class MessageService {
 		entity.setRead(dto.getRead());
 		entity.setSender(userRepository.getOne(dto.getSenderId()));
 		entity.setReceiver(userRepository.getOne(dto.getReceiverId()));
+	}
+	
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("Id not found " + id);
+		}
+
+		catch (DataIntegrityViolationException e) {
+			throw new DataBaseException("Integrity Violation");
+		}
 	}
 	
 }

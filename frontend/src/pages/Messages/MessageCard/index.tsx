@@ -5,7 +5,7 @@ import { getTokenData } from 'util/auth';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 import { useCallback, useEffect, useState } from 'react';
-import { BsCheck2All, BsChevronDown, BsChevronUp, BsFillTrash3Fill } from 'react-icons/bs';
+import { BsCheck2All, BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 type Props = {
   message: Message;
@@ -97,7 +97,7 @@ const MessageCard = ({message, onDelete} : Props) => {
     
     return(
         <div className={iAmTheAuthor() ? "message-card-container" : "message-card-container-author"}>
-                        <div className='message-card-top-container'>
+            <div className='message-card-top-container'>
                 {iAmTheAuthor() && 
                     <div className="options-menu">
                         <div className="menu-arrow" onClick={toggleMenu}>
@@ -120,7 +120,6 @@ const MessageCard = ({message, onDelete} : Props) => {
                     )}
                 </div>
             </div>
-
         </div>
     );
 }
