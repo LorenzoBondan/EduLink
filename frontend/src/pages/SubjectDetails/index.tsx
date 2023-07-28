@@ -16,6 +16,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import Modal from 'react-modal';
 import AddNote from 'components/AddNote';
 import TestCard from './TestCard';
+import AddTest from 'components/AddTest';
 
 type UrlParams = {
     subjectId: string;
@@ -120,6 +121,17 @@ const SubjectDetails = () => {
         getSubject();
     }
 
+    const [testModalIsOpen, setTestModalIsOpen] = useState(false);
+
+    function openTestModal(){
+        setTestModalIsOpen(true);
+    }
+
+    function closeTestModal(){
+        setTestModalIsOpen(false);
+        getSubject();
+    }
+
     return(
         <div className="subject-details-container">
             <div className='subject-details-first-container base-card'>
@@ -209,9 +221,23 @@ const SubjectDetails = () => {
                                     )}
                                     {/* TEACHER */}
                                     {hasAnyRoles(['ROLE_TEACHER']) && (
-                                        subject?.students.map(student => (
+                                        <>
+                                        <div className='subject-posts-button-container'>
+                                            <button onClick={openTestModal} className='btn btn-primary text-white'><AiOutlinePlus/> Add Test</button>
+                                            <Modal 
+                                                isOpen={testModalIsOpen}
+                                                onRequestClose={closeTestModal}
+                                                contentLabel="Example Modal"
+                                                overlayClassName="modal-overlay"
+                                                className="modal-content"
+                                            >
+                                            {subject && <AddTest subject={subject} onCancel={closeTestModal} key={subjectId}/>}
+                                            </Modal>
+                                        </div>
+                                        {subject?.students.map(student => (
                                             <TestCard student={student} subjectId={parseInt(subjectId)} onDeleteOrEdit={getSubject} key={student.id}/>
-                                        ))
+                                        ))}
+                                        </>
                                     )}
                                 </tbody>
                             </table>

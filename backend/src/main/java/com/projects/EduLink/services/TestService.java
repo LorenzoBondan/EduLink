@@ -84,6 +84,7 @@ public class TestService {
 	public TestDTO insert(TestDTO dto) {
 		Test entity = new Test();
 		copyDtoToEntity(dto, entity);
+		entity = repository.save(entity);
 		
 		//send a notification to the students
 		for(User student : entity.getStudents()) {
@@ -109,7 +110,6 @@ public class TestService {
 			}
 		}
 		
-		entity = repository.save(entity);
 		return new TestDTO(entity);
 	}
 
