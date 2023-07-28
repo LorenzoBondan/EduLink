@@ -11,8 +11,8 @@ import com.projects.EduLink.entities.User;
 public interface MessageRepository extends JpaRepository<Message,Long>{
 	
 	@Query("SELECT obj FROM Message obj WHERE "
-			+ "(obj.sender = :sender) AND "
-			+ "(obj.receiver = :receiver) "
+			+ "((obj.sender = :sender) OR (obj.sender = :receiver)) AND "
+			+ "((obj.receiver = :receiver) OR (obj.receiver =: sender)) "
 			+ "ORDER BY obj.moment DESC")
 	Page<Message> getMessagesBySenderAndReceiver(User sender, User receiver, Pageable pageable);
 

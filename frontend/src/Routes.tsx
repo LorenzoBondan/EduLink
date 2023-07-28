@@ -8,6 +8,7 @@ import history from "util/history";
 import background from 'assets/images/background.jpg';
 import Subjects from "pages/Subjects";
 import SubjectDetails from "pages/SubjectDetails";
+import Messages from "pages/Messages";
 
 const Routes = () => {
 
@@ -46,8 +47,8 @@ const Routes = () => {
                                 <SubjectDetails/>
                             </Route>
 
-                            <Route path="/messages/:currentUserId/:receiverUserId" exact>
-                                
+                            <Route path="/messages/:receiverUserId" exact>
+                                <Messages/>
                             </Route>
 
                         </Switch>
