@@ -9,6 +9,7 @@ import background from 'assets/images/background.jpg';
 import Subjects from "pages/Subjects";
 import SubjectDetails from "pages/SubjectDetails";
 import Messages from "pages/Messages";
+import Chats from "pages/Chats";
 
 const Routes = () => {
 
@@ -49,6 +50,10 @@ const Routes = () => {
 
                             <Route path="/messages/:receiverUserId" exact>
                                 <Messages/>
+                            </Route>
+
+                            <Route path="/chats" exact>
+                                <Chats/>
                             </Route>
 
                         </Switch>
