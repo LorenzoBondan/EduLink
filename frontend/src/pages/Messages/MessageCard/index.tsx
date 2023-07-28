@@ -130,7 +130,7 @@ const MessageCard = ({message, onDelete} : Props) => {
             <div className='message-card-content'>
                 <p>{message.text}</p>
                 {iAmTheAuthor() && (
-                    message.read ? <BsCheck2All style={{ color: 'green' }} /> : <BsCheck2All style={{ color: 'gray' }} />
+                    message.read ? <BsCheck2All style={{ color: '#0D7DF0' }} /> : <BsCheck2All style={{ color: '#ACB5A0' }} />
                 )}
             </div>
         </div>
