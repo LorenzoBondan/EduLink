@@ -37,6 +37,7 @@
     width: 20%;
     justify-content: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .second-container-navbar{

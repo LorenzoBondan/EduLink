@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { requestBackend } from 'util/requests';
 import { AxiosRequestConfig } from 'axios';
 import { User } from 'types';
+import { BiEdit } from "react-icons/bi";
+import { FaTrashAlt } from "react-icons/fa";
 import './styles.css';
 
 type Props = {
@@ -13,7 +15,7 @@ function UserCrudCard( {user, onDelete} : Props ) {
 
   const handleDelete = (userId : number) => {
     
-    if(!window.confirm("Are you sure that you want to delete the user?")){ // messagebox
+    if(!window.confirm("Are you sure that you want to delete the user?")){
       return;
     }
 
@@ -29,24 +31,13 @@ function UserCrudCard( {user, onDelete} : Props ) {
   }
 
     return (
-        <div className='base-card user-crud-card'>
-            <div className='user-crud-card-top-container'>
-              <img src={user.imgUrl} alt="" />
-              <h3>{user.name} <p>#{user.id}</p></h3>
-            </div>
-            <div className='user-crud-card-buttons-container'>
-              <Link to={`/admin/users/${user.id}`}>
-                  <button className='btn btn-outline-secondary user-crud-card-button'>
-                    EDIT
-                  </button>
-                </Link>
-              <button className='btn btn-outline-danger user-crud-card-button delete-button'
-                onClick={() => handleDelete(user.id)}
-                >
-                  DELETE
-                </button>
-            </div>
-        </div>
+      <tr>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        <td><Link to={`/admin/users/${user.id}`}><BiEdit/></Link></td>
+        <td onClick={() => handleDelete(user.id)} style={{cursor:"pointer"}}><FaTrashAlt/></td>
+      </tr>
     );
   }
 

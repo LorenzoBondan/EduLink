@@ -52,28 +52,35 @@ const List = () => {
     }
 
     return(
-        <div className='courses-crud-container'>
-          <div className="courses-crud-content">
-            <div className="courses-crud-bar-container">
-                  <Link to="/admin/users/create">
-                      <button className="btn btn-primary btn-crud-add" style={{color:"white", marginBottom:"20px"}}>
-                          ADD NEW USER
-                      </button>
-                  </Link>
-              </div>
+        <div className='users-crud-container'>
+          <div className="users-crud-content">
+            <div className="users-crud-bar-container">
+              <button className="btn btn-primary btn-crud-add" style={{color:"white", marginBottom:"20px"}}>
+                <Link to="/admin/users/create"> ADD NEW USER</Link>
+              </button>
+            </div>
               <div className='users-search-bar-container'>
                 <UserFilter onSubmitFilter={handleSubmitFilter} />
               </div>
-              <div className='row'>
+              <table className="user-crud-table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
                   {page?.content
                       .sort( (a,b) => a.name > b.name ? 1 : -1)
                       .map((item) => (
-                          <div className="col-sm-4 col-md-4 col-lg-3 col-xl-2 user-crud-column" key={item.id}>
-                              <UserCrudCard user={item} onDelete={() => getUsers()} />
-                          </div>
+                        <UserCrudCard user={item} onDelete={() => getUsers()} />
                       ))
                   }
-            </div>
+                </tbody>
+              </table>
           </div>
           <div className='pagination-container'>
             <Pagination 
@@ -83,7 +90,7 @@ const List = () => {
               forcePage={page?.number}
             />
           </div>
-    </div>
+        </div>
     );
 }
 
