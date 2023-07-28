@@ -1,11 +1,14 @@
 package com.projects.EduLink.services;
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,6 +85,15 @@ public class MessageService {
 	public Integer messagesUnreadBySenderAndReceiver(Long receiverId){
 		User user = authService.authenticated();
 		User receiver = userRepository.getOne(receiverId);
+		
+        List<Message> lastMessages = repository.findLatestMessage(user, receiver, PageRequest.of(0, 1));
+        if (!lastMessages.isEmpty()) {
+            Message message = lastMessages.get(0);
+            if (message.getSender().getId().equals(user.getId())) {
+                return 0;
+            }
+        }
+		
 		Integer unreadMessages = repository.getUnreadMessagesBySenderAndReceiver(user, receiver);
 		return unreadMessages;
 	}

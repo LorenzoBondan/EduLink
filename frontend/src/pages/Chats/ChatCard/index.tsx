@@ -52,9 +52,11 @@ const ChatCard = ({userId} : Props) => {
                 <img src={user?.imgUrl} alt="" />
                 <h3>{user?.name}</h3>
             </div>
-            <div className='chat-card-second-container'>
-                <p className='unread-messages-badge'>{unreadMessages}</p>
-            </div>
+            {unreadMessages && unreadMessages > 0 && 
+                <div className='chat-card-second-container'>
+                    <p className='unread-messages-badge'>{unreadMessages}</p>
+                </div>
+            }
         </div>
     );
 }

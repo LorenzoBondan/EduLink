@@ -5,6 +5,7 @@ import { AxiosRequestConfig } from 'axios';
 import { useEffect, useState, useCallback } from 'react';
 import { BsEnvelopePlus } from 'react-icons/bs';
 import { hasAnyRoles } from 'util/auth';
+import { Link } from 'react-router-dom';
 
 type Props = {
     teacherId: number;
@@ -38,7 +39,9 @@ const TeacherCard = ({teacherId}: Props) => {
             </div>
             {hasAnyRoles(['ROLE_PARENT', 'ROLE_ADMIN']) && 
                 <div className='teacher-card-second-container'>
-                    <BsEnvelopePlus/>
+                    <Link to={`/messages/${teacher?.id}`}>
+                        <BsEnvelopePlus/>
+                    </Link>
                 </div>
             }
         </div>

@@ -134,7 +134,7 @@ const TopNavbar = () => {
                       {user && user?.notifications.filter(notification => !notification.read).length > 0 && <span className='notification-badge'>{user?.notifications.filter(notification => !notification.read).length}</span>}
                     </p>
                     { hasAnyRoles(['ROLE_PARENT', 'ROLE_TEACHER', 'ROLE_ADMIN']) && ( 
-                    <NavLink to="/messages" className='top-navbar-item'>
+                    <NavLink to="/chats" className='top-navbar-item'>
                         <p data-tooltip-content="Messages" data-tooltip-id="top-navbar-tooltip"><HiOutlineChatBubbleOvalLeft className='top-navbar-icon'/></p>
                     </NavLink>
                     )}
