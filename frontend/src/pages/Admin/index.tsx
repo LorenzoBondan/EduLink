@@ -5,6 +5,8 @@ import { hasAnyRoles, isAuthenticated } from "util/auth";
 import { MdDangerous } from 'react-icons/md';
 import Users from "./User";
 import LeftNavbar from "./LeftNavbar";
+import Subjects from "./Subjects";
+
 
 function Admin(){
     return(
@@ -14,7 +16,7 @@ function Admin(){
             <LeftNavbar/>
             <Switch>
                 <PrivateRoute path="/admin/subjects">
-                    
+                    <Subjects/>
                 </PrivateRoute>
                 <PrivateRoute path="/admin/users">
                     <Users/>

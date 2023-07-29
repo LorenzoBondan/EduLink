@@ -1,0 +1,92 @@
+.users-crud-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.users-crud-bar-container button{
+    margin-bottom: 0 !important;
+    width: 280px !important;
+}
+
+.users-crud-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.users-search-bar-container{
+    display: flex;
+    width: 280px;
+}
+
+.user-crud-table{
+    width: 100%;
+    border-spacing: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-crud-table thead th {
+    text-align: left;
+    height: 40px;
+    font-size: 14px;
+    padding-left: 5px;
+    background-color: #fff;
+    font-weight: bold;
+    width: 25%;
+}
+
+.user-crud-table tbody td {
+    height: 50px;
+    border-top: 1px solid #A5AFB5;
+    font-size: 1rem;
+    transition: background .3s;
+    padding-left: 5px;
+    color: rgba(0,0,0,0.7);
+    width: 25%;
+}
+
+.user-crud-table tbody tr:hover > td {
+    background-color: rgb(200, 200, 200);
+}
+
+.user-crud-table tbody tr:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+}
+
+.user-crud-table tbody tr:nth-child(odd) {
+    background-color: rgba(245,245,245,1);
+}
+
+.user-crud-table tbody tr svg{
+    font-size: 1.3rem;
+}
+
+@media(min-width:576px){
+    .users-search-bar-container{
+        display: flex;
+        width: 450px;
+    }
+
+    .users-crud-content{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .user-crud-table{
+        width: 70%;
+    }
+}
+
+@media(min-width:1200px){
+    .users-crud-container{
+        height: calc(100vh - 95px);
+    }
+}
