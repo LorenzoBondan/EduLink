@@ -6,6 +6,7 @@ import Select from 'react-select';
 import { requestBackend } from 'util/requests';
 import { Role, User } from 'types';
 import { toast } from 'react-toastify';
+import './styles.css';
 
 type UrlParams = {
     userId: string;
@@ -79,7 +80,7 @@ const Form = () => {
     return(
         <div className="edit-profile-form-container">
             <div className="base-card post-card-form-card">
-                <h1>Edit Profile</h1>
+                <h1>Add or Edit Profile</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='row post-crud-inputs-container'>
                         <div className='post-crud-inputs-left-container'>
@@ -142,7 +143,7 @@ const Form = () => {
                                 <div className='invalid-feedback d-block'>{errors.imgUrl?.message}</div>
                         </div>
                         <div className='margin-bottom-30'>
-                            <label htmlFor="" style={{color:"white"}}>Roles</label> 
+                            <label htmlFor="">Roles</label> 
                                 <Controller 
                                     name = 'roles'
                                     rules = {{required: true}}
