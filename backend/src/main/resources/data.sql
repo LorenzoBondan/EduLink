@@ -36,6 +36,9 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (10, 3);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (11, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (12, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (13, 2);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (14, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (15, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (16, 1);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', false, 3, 4);
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', false, 4, 3);
@@ -97,6 +100,12 @@ INSERT INTO tb_subject_student (subject_id, student_id) VALUES (5, 8);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (6, 8);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (7, 8);
 INSERT INTO tb_subject_student (subject_id, student_id) VALUES (8, 8);
+
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (10, 15);
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (10, 16);
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (10, 14);
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (11, 15);
+INSERT INTO tb_subject_student (subject_id, student_id) VALUES (11, 14);
 
 INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 5.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
 INSERT INTO tb_test (name, points, score, date, subject_id) VALUES ('Math test 1', 10.0, 9.0, TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', 1);
