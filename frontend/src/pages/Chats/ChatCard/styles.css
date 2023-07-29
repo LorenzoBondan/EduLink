@@ -49,3 +49,11 @@
     font-weight: bold;
     margin-bottom: 0;
 }
+
+.chat-card-first-container h4{
+    color: #9E9E9E;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    margin-left: 20px;
+    font-weight: 700;
+}
