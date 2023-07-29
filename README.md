@@ -7,22 +7,56 @@ EduLink is an innovative communication platform that connects schools, parents, 
 ## Layout desktop
 
 ### Chat 
+![chat](https://github.com/LorenzoBondan/EduLink/assets/105743965/32942a87-883d-48e3-bd91-262e6024d52e)
 
+### Chats 
+![chats](https://github.com/LorenzoBondan/EduLink/assets/105743965/0a2fa4c1-77a8-4b9c-b5d4-e77585457684)
+
+## Teacher View
+
+### Subjects (Teacher View)
+![subjects_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/6350e712-ee16-4b70-a6c7-b777c791f425)
+
+### Subject Notes (Teacher View)
+![subject_notes_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/9b45ab57-198a-403f-82c6-a8d9f6442886)
+
+### Subject Tests (Teacher View)
+![subject_tests_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/cef88610-fbb3-405c-bc5e-9e9357dffd39)
+![subject_tests_teacher_add_test_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/cb299887-0df4-440a-894e-d640c1eb5e42)
+
+## Student View
+
+### Subjects (Student View)
+![subjects_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/a380d9fd-4ac9-44dd-b2dd-40fc36af6350)
+
+### Subject Notes (Student View)
+![subject_notes_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/2c385af1-72e2-4517-bf0f-f6fb0121a51e)
+
+### Subject Tests (Student View)
+![subject_tests_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/8222250d-8de5-43c9-8f83-b7970d92f023)
+
+## Parent View
+
+### Subjects (Parent View)
+![subjects_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/b1ecc275-21da-4229-a2de-593b0e277a3a)
+
+### Subject Notes (Parent View)
+![subject_notes_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/b5d7888a-39ce-4207-bad2-60f6ecf95405)
+
+### Subject Tests (Parent View)
+![subject_tests_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/e0663fc6-c8e9-4317-a981-ec9e334c8885)
 
 ### Profile
+![profile](https://github.com/LorenzoBondan/EduLink/assets/105743965/4bf73087-12f8-4a4c-8b73-d37fbf16830f)
 
+### Home page
+![home_login](https://github.com/LorenzoBondan/EduLink/assets/105743965/958a386f-beab-41de-91e7-bb9cac9bd0ed)
 
-#### Home page
-
-
-#### Admin CRUD page
-
-
-#### New Exchange
-
+### Admin CRUD page
+![admin-crud](https://github.com/LorenzoBondan/EduLink/assets/105743965/6506d166-28d0-4622-bf48-43fcebb24bfc)
 
 ## Class Diagram
-
+![asta](https://github.com/LorenzoBondan/EduLink/assets/105743965/7b189a45-9180-4790-9560-f66bd83ca470)
 
 ## Used technologies
 
