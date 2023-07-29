@@ -7,7 +7,8 @@
     height: auto;
     box-shadow: 0 -1px #C7CDD1, inset 0 -1px #C7CDD1;
     padding: 16px 0;
-    backdrop-filter: blur(100px);
+    background-color: #fff;
+    padding-right: 10px;
 }
 
 .note-card-buttons-container{
