@@ -18,7 +18,7 @@ EduLink is an innovative communication platform that connects schools, parents, 
 ![subjects_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/6350e712-ee16-4b70-a6c7-b777c791f425)
 
 ### Subject Notes (Teacher View)
-![subject_notes_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/9b45ab57-198a-403f-82c6-a8d9f6442886)
+![subject_notes_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/3fd83bd2-fd8b-4cc3-bf4e-d8950d370694)
 
 ### Subject Tests (Teacher View)
 ![subject_tests_teacher_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/cef88610-fbb3-405c-bc5e-9e9357dffd39)
@@ -30,7 +30,7 @@ EduLink is an innovative communication platform that connects schools, parents, 
 ![subjects_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/a380d9fd-4ac9-44dd-b2dd-40fc36af6350)
 
 ### Subject Notes (Student View)
-![subject_notes_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/2c385af1-72e2-4517-bf0f-f6fb0121a51e)
+![subject_notes_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/da2e9e9c-d037-4867-aaa7-b53ca20d8031)
 
 ### Subject Tests (Student View)
 ![subject_tests_student_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/8222250d-8de5-43c9-8f83-b7970d92f023)
@@ -41,7 +41,7 @@ EduLink is an innovative communication platform that connects schools, parents, 
 ![subjects_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/b1ecc275-21da-4229-a2de-593b0e277a3a)
 
 ### Subject Notes (Parent View)
-![subject_notes_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/b5d7888a-39ce-4207-bad2-60f6ecf95405)
+![subject_notes_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/7e0f157f-6b16-4e44-b3af-9f9674160f43)
 
 ### Subject Tests (Parent View)
 ![subject_tests_parent_view](https://github.com/LorenzoBondan/EduLink/assets/105743965/e0663fc6-c8e9-4317-a981-ec9e334c8885)
