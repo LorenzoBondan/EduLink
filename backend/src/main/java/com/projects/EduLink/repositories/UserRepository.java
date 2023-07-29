@@ -16,4 +16,10 @@ public interface UserRepository extends JpaRepository<User,Long>{
 	@Query("SELECT DISTINCT obj FROM User obj "
 			+ "WHERE (UPPER(obj.name) LIKE UPPER(CONCAT('%', :name, '%')) ) ORDER BY obj.name")
 	Page<User> find(String name, Pageable pageable);
+	
+	@Query("SELECT DISTINCT u FROM User u JOIN u.roles r WHERE r.authority = 'ROLE_STUDENT'")
+	Page<User> findStudents(Pageable pageable);
+	
+	@Query("SELECT DISTINCT u FROM User u JOIN u.roles r WHERE r.authority = 'ROLE_TEACHER'")
+	Page<User> findTeachers(Pageable pageable);
 }
