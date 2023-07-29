@@ -35,8 +35,8 @@ function UserCrudCard( {user, onDelete} : Props ) {
         <td>{user.id}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
-        <td><Link to={`/admin/users/${user.id}`}><BiEdit/></Link></td>
-        <td onClick={() => handleDelete(user.id)} style={{cursor:"pointer"}}><FaTrashAlt/></td>
+        <td style={{paddingLeft:"0px"}}><Link to={`/admin/users/${user.id}`}><BiEdit/></Link></td>
+        <td onClick={() => handleDelete(user.id)} style={{cursor:"pointer", paddingRight:"10px"}}><FaTrashAlt/></td>
       </tr>
     );
   }

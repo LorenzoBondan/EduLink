@@ -69,7 +69,7 @@ const List = () => {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Edit</th>
-                    <th>Delete</th>
+                    <th style={{paddingRight:"5px"}}>Delete</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -177,7 +177,7 @@ const Form = () => {
                                 >
                                 CANCEL
                             </button>
-                            <button className='btn btn-primary text-white post-crud-buttons'>SAVE</button>
+                            <button className='btn btn-outline-primary post-crud-buttons'>SAVE</button>
                         </div>
                     </div>
                 </form>
