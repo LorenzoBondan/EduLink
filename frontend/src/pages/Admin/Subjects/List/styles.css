@@ -69,6 +69,23 @@
     font-size: 1.3rem;
 }
 
+.subjects-crud-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+.subject-crud-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 @media(min-width:576px){
     .users-search-bar-container{
         display: flex;

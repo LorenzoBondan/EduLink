@@ -1,27 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Subject } from 'types';
+import { useCallback, useEffect, useState } from 'react';
+import './styles.css';
 import { requestBackend } from 'util/requests';
 import { AxiosRequestConfig } from 'axios';
-import { User } from 'types';
-import { BiEdit } from "react-icons/bi";
-import { FaTrashAlt } from "react-icons/fa";
-import './styles.css';
+import { FaUsers } from 'react-icons/fa';
+import { HiOutlineDocumentText, HiOutlineEnvelope } from 'react-icons/hi2';
 
 type Props = {
-  user : User;
-  onDelete : Function;
+    subject: Subject;
+    onDelete: Function;
 }
 
-function UserCrudCard( {user, onDelete} : Props ) {
+const SubjectCrudCard = ({subject, onDelete} : Props) => {
 
   const handleDelete = (userId : number) => {
     
-    if(!window.confirm("Are you sure that you want to delete the user?")){
+    if(!window.confirm("Are you sure that you want to delete the subject?")){
       return;
     }
 
     const params : AxiosRequestConfig = {
       method:"DELETE",
-      url: `/users/${userId}`,
+      url: `/subjects/${subject.id}`,
       withCredentials: true
     }
 
@@ -30,15 +30,31 @@ function UserCrudCard( {user, onDelete} : Props ) {
     })
   }
 
-    return (
-      <tr>
-        <td>{user.id}</td>
-        <td>{user.name}</td>
-        <td>{user.email}</td>
-        <td><Link to={`/admin/users/${user.id}`}><BiEdit/></Link></td>
-        <td onClick={() => handleDelete(user.id)} style={{cursor:"pointer"}}><FaTrashAlt/></td>
-      </tr>
+    return(
+        <div className='subject-card-container'>
+            <div className='subject-card-top-container'>
+                <img src={subject?.imgUrl} alt="" />
+            </div>
+            <div className='subject-card-bottom-container'>
+                <h5>{subject?.name}</h5>
+                <p>{subject?.team} - {subject?.name}</p>
+            </div>
+            <div className='subject-card-buttons-container'>
+                <div className='subject-card-button'>
+                    <FaUsers/>
+                    <p>{subject?.students.length}</p>
+                </div>
+                <div className='subject-card-button'>
+                    <HiOutlineDocumentText/>
+                    <p>{subject?.tests.length}</p>
+                </div>
+                <div className='subject-card-button'>
+                    <HiOutlineEnvelope/>
+                    <p>{subject?.notes.length}</p>
+                </div>
+            </div>
+        </div>
     );
-  }
+}
 
-  export default UserCrudCard;
+export default SubjectCrudCard;

@@ -6,6 +6,7 @@ import UserCrudCard from "../SubjectCrudCard";
 import { SpringPage, Subject } from "types";
 import Pagination from "components/Pagination";
 import './styles.css';
+import SubjectCrudCard from "../SubjectCrudCard";
 
 type ControlComponentsData = {
   activePage: number;
@@ -28,7 +29,7 @@ const List = () => {
           url: "/subjects",
           params: {
             page: controlComponentsData.activePage,
-            size: 10,
+            size: 8,
           },
         }
       
@@ -51,25 +52,16 @@ const List = () => {
                 <Link to="/admin/subjects/create"> ADD NEW SUBJECT</Link>
               </button>
             </div>
-              <table className="user-crud-table">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {page?.content
-                      .sort( (a,b) => a.name > b.name ? 1 : -1)
-                      .map((item) => (
-                        <p></p>
-                      ))
-                  }
-                </tbody>
-              </table>
+            <div className="subjects-crud-row row">
+              {page?.content
+                .sort((a,b) => a.team > b.team ? 1 : -1)
+                .map((item) => (
+                  <div className="col-sm-4 col-md-4 col-lg-3 col-xl-3 subject-crud-column" key={item.id}>
+                      <SubjectCrudCard subject={item} key={item.id} onDelete={getSubjects}/>
+                  </div>
+              ))}
+            </div>
+
           </div>
           <div className='pagination-container'>
             <Pagination 
