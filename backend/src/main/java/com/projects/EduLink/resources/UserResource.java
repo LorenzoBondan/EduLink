@@ -37,6 +37,18 @@ public class UserResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping(value = "/students") 
+	public ResponseEntity<Page<UserDTO>> findStudents(Pageable pageable) {
+		Page<UserDTO> list = service.findStudents(pageable);	
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value = "/teachers") 
+	public ResponseEntity<Page<UserDTO>> findTeachers(Pageable pageable) {
+		Page<UserDTO> list = service.findTeachers(pageable);	
+		return ResponseEntity.ok().body(list);
+	}
+	
 	@GetMapping(value = "/{id}") 
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
 		UserDTO dto = service.findById(id);	
