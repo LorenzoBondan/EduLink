@@ -21,6 +21,7 @@
 
 .note-card-buttons-container svg{
     color: #2a2c2e86;
+    font-size: 1rem;
 }
 
 .note-card-buttons-container svg:hover{
@@ -38,8 +39,8 @@
 }
 
 .note-card-teacher-container img{
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
 }
 
@@ -54,7 +55,7 @@
 }
 
 .note-card-content-container h5{
-    font-size: 1rem;
+    font-size: 0.7rem;
     margin-bottom: 4px;
     flex-wrap: wrap;
 }
@@ -69,16 +70,39 @@
 }
 
 .note-card-moment-container p{
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     margin: 3px 0 0;
 }
 
 .note-card-moment-container span{
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     margin: 3px 0 0;
     color: #6B7780;
 }
 
 .edit-note-form textarea{
     height: auto !important;
+}
+
+@media(min-width:768px){
+    .note-card-content-container h5{
+        font-size: 1rem;
+    }
+
+    .note-card-moment-container p{
+        font-size: 0.8rem;
+    }
+    
+    .note-card-moment-container span{
+        font-size: 0.8rem;
+    }
+
+    .note-card-teacher-container img{
+        height: 40px;
+        width: 40px;
+    }
+
+    .note-card-buttons-container svg{
+        font-size: 1.2rem;
+    }
 }
