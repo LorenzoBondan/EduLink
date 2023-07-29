@@ -1,8 +1,8 @@
 .messages-container{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 10px;
 }
@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 80%;
+    width: 100%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 }
 
@@ -98,4 +98,15 @@
     margin-left: 5px;
     font-size: 36px;
     cursor: pointer;
+}
+
+@media(min-width:992px){
+    .messages-container{
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .messages-card{
+        width: 80%;
+    }
 }
