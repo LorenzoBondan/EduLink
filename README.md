@@ -52,8 +52,12 @@ EduLink is an innovative communication platform that connects schools, parents, 
 ### Home page
 ![home_login](https://github.com/LorenzoBondan/EduLink/assets/105743965/958a386f-beab-41de-91e7-bb9cac9bd0ed)
 
-### Admin CRUD page
-![admin-crud](https://github.com/LorenzoBondan/EduLink/assets/105743965/6506d166-28d0-4622-bf48-43fcebb24bfc)
+### Admin CRUD page (User)
+![admin-crud-users](https://github.com/LorenzoBondan/EduLink/assets/105743965/6047122e-ea18-4022-9f45-4968cff07769)
+
+### Admin CRUD page (Subject)
+![admin-crud-subjects](https://github.com/LorenzoBondan/EduLink/assets/105743965/a91ba37a-f947-4d40-95e1-98679c9f75fa)
+![admin-crud-subjects-form](https://github.com/LorenzoBondan/EduLink/assets/105743965/7800d1fc-9e30-495f-8c39-08f866757547)
 
 ## Class Diagram
 ![asta](https://github.com/LorenzoBondan/EduLink/assets/105743965/7b189a45-9180-4790-9560-f66bd83ca470)
