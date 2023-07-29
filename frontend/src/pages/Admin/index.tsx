@@ -4,16 +4,23 @@ import './styles.css';
 import { hasAnyRoles, isAuthenticated } from "util/auth";
 import { MdDangerous } from 'react-icons/md';
 import Users from "./User";
+import LeftNavbar from "./LeftNavbar";
 
 function Admin(){
     return(
         <div className="admin-container" style={{display:"flex", justifyContent:"flex-start"}}>
         {hasAnyRoles(["ROLE_ADMIN"])?  (
+            <>
+            <LeftNavbar/>
             <Switch>
+                <PrivateRoute path="/admin/subjects">
+                    
+                </PrivateRoute>
                 <PrivateRoute path="/admin/users">
                     <Users/>
                 </PrivateRoute>
             </Switch>
+            </>
             ) : (
                 <div className='base-card access-main-container'>
                     <div className="access-text-container" style={{textAlign:"center"}}>
