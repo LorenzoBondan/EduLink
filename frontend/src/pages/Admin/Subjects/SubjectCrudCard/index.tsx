@@ -1,10 +1,8 @@
 import { Subject } from 'types';
-import { useCallback, useEffect, useState } from 'react';
 import './styles.css';
 import { requestBackend } from 'util/requests';
 import { AxiosRequestConfig } from 'axios';
-import { FaUsers } from 'react-icons/fa';
-import { HiOutlineDocumentText, HiOutlineEnvelope } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 
 type Props = {
     subject: Subject;
@@ -13,7 +11,7 @@ type Props = {
 
 const SubjectCrudCard = ({subject, onDelete} : Props) => {
 
-  const handleDelete = (userId : number) => {
+  const handleDelete = () => {
     
     if(!window.confirm("Are you sure that you want to delete the subject?")){
       return;
@@ -39,19 +37,13 @@ const SubjectCrudCard = ({subject, onDelete} : Props) => {
                 <h5>{subject?.name}</h5>
                 <p>{subject?.team} - {subject?.name}</p>
             </div>
-            <div className='subject-card-buttons-container'>
-                <div className='subject-card-button'>
-                    <FaUsers/>
-                    <p>{subject?.students.length}</p>
-                </div>
-                <div className='subject-card-button'>
-                    <HiOutlineDocumentText/>
-                    <p>{subject?.tests.length}</p>
-                </div>
-                <div className='subject-card-button'>
-                    <HiOutlineEnvelope/>
-                    <p>{subject?.notes.length}</p>
-                </div>
+            <div className='subject-crud-card-buttons-container'>
+                <button onClick={() => handleDelete()} className='btn btn-outline-danger'>DELETE</button>
+                <button className='btn btn-outline-primary'>
+                  <Link to={`/admin/subjects/${subject.id}`}>
+                    EDIT
+                  </Link>
+                </button>
             </div>
         </div>
     );

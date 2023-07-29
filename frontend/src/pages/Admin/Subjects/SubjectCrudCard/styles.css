@@ -1,0 +1,12 @@
+.subject-crud-card-buttons-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.subject-crud-card-buttons-container button{
+    width: 49%;
+}

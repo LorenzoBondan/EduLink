@@ -2,7 +2,6 @@ import { AxiosRequestConfig } from "axios";
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { requestBackend } from "util/requests";
-import UserCrudCard from "../SubjectCrudCard";
 import { SpringPage, Subject } from "types";
 import Pagination from "components/Pagination";
 import './styles.css';
@@ -14,7 +13,6 @@ type ControlComponentsData = {
 
 const List = () => {
 
-     // pagination and filter
      const [controlComponentsData, setControlComponentsData] = useState<ControlComponentsData>({activePage:0});
 
      const handlePageChange = (pageNumber : number) => {
@@ -61,7 +59,6 @@ const List = () => {
                   </div>
               ))}
             </div>
-
           </div>
           <div className='pagination-container'>
             <Pagination 
