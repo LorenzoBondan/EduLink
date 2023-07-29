@@ -51,7 +51,7 @@ const Chats = () => {
             <div className='my-chats-container base-card'>
                 <h1>Messages</h1>
                 {uniqueAuthorsIds.map(id => (
-                    <Link to={`/messages/${id}`}>
+                    <Link to={`/messages/${id}`} key={id}>
                         <ChatCard userId={id} key={id}/>
                     </Link>
                 ))}

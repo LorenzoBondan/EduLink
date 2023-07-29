@@ -57,7 +57,6 @@ const ChatCard = ({userId} : Props) => {
         requestBackend(params) 
           .then(response => {
             setLastMessage(response.data);
-            console.log(response.data);
           })
     }, [userId])
 
@@ -74,14 +73,14 @@ const ChatCard = ({userId} : Props) => {
                   <p className='user-role-badge' key={role.id}>{role.authority.substring(5)}</p>
                 ))}
                 {lastMessage && lastMessage?.map(message => (
-                  <h4>{message.text}</h4>
+                  <h4 key={message.id}>{message.text}</h4>
                 ))}
             </div>
-            {unreadMessages && unreadMessages > 0 && 
-                <div className='chat-card-second-container'>
-                    <p className='unread-messages-badge'>{unreadMessages}</p>
-                </div>
-            }
+            {unreadMessages && unreadMessages > 0 && (
+              <div className='chat-card-second-container'>
+                <p className='unread-messages-badge'>{unreadMessages}</p>
+              </div>
+            )}
         </div>
     );
 }

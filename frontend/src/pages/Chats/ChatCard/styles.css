@@ -13,7 +13,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 50%;
+    width: 90%;
 }
 
 .chat-card-first-container img{
@@ -29,7 +29,7 @@
 }
 
 .chat-card-second-container{
-    width: 50%;
+    width: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;

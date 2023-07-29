@@ -42,7 +42,7 @@ INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sur
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Thank you', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:55:10', false, 3, 4);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', true, 11, 4);
-INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', false, 4, 11);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', true, 4, 11);
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Ok, see you soon', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:55:10', true, 11, 4);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', true, 12, 4);

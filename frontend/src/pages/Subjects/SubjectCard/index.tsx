@@ -51,7 +51,7 @@ const SubjectCard = ({subjectId} : Props) => {
                 </div>
                 <div className='subject-card-button'>
                     <HiOutlineEnvelope/>
-                    <p>0</p>
+                    <p>{subject?.notes.length}</p>
                 </div>
             </div>
         </div>
