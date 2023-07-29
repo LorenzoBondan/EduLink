@@ -42,23 +42,20 @@ const Form = () => {
     const [selectStudents, setSelectStudents] = useState<User[]>();
 
     useEffect(() => {
-        requestBackend({url: '/users', withCredentials: true})
+        requestBackend({url: '/users/students', withCredentials: true})
             .then(response => {
-                setSelectStudents(response.data.content)
+                setSelectStudents(response.data.content);
         })
     }, []);
 
     const [selectTeacher, setSelectTeacher] = useState<User[]>();
 
     useEffect(() => {
-        requestBackend({url: '/users', withCredentials: true})
+        requestBackend({url: '/users/teachers', withCredentials: true})
             .then(response => {
-                setSelectTeacher(response.data.content)
+                setSelectTeacher(response.data.content);
         })
     }, []);
-
-    const selectTeacherNames = selectTeacher?.map(teacher => teacher.name);
-    const selectTeacherIds = selectTeacher?.map(teacher => teacher.id);
 
     const onSubmit = (formData : Subject) => {
 
@@ -122,12 +119,12 @@ const Form = () => {
                                         required: 'Required field',
                                     pattern: { 
                                         value: /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm,
-                                        message: 'Insira uma URL válida'
+                                        message: 'Insert a valid URL'
                                     }
                                     })}
                                     type="text"
                                     className={`form-control base-input ${errors.imgUrl ? 'is-invalid' : ''}`}
-                                    placeholder="URL of course's image"
+                                    placeholder="URL of subject's image"
                                     name="imgUrl"
                                 />
                                 <div className='invalid-feedback d-block'>{errors.imgUrl?.message}</div>
@@ -142,7 +139,7 @@ const Form = () => {
                                 placeholder='Teacher' 
                                 name="teacherId"
                                 >
-                                {selectTeacherIds?.map(id => <option key={id} value={id} label={selectTeacherNames && selectTeacherNames[id-1]}></option>)}
+                                {selectTeacher?.sort((a,b) => a.name > b.name ? 1 : -1).map(teacher => <option key={teacher.id} value={teacher.id} label={teacher.name}></option>)}
                             </select>
                         </div>
                         <div className='margin-bottom-30'>
@@ -156,7 +153,7 @@ const Form = () => {
                                             {...field}
                                             options={selectStudents}
                                             classNamePrefix="users-crud-select"
-                                            placeholder="Roles"
+                                            placeholder="Students"
                                             isMulti
                                             getOptionLabel={(student: User) => student.name}
                                             getOptionValue={(student: User) => student.id.toString()}
