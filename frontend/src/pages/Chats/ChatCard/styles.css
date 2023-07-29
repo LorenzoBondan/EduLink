@@ -18,13 +18,13 @@
 
 .chat-card-first-container img{
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 .chat-card-first-container h3{
     margin: 0 8px;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 700;
 }
 
@@ -52,8 +52,24 @@
 
 .chat-card-first-container h4{
     color: #9E9E9E;
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     margin-bottom: 0;
     margin-left: 20px;
     font-weight: 700;
+}
+
+@media(min-width:576px){
+    .chat-card-first-container img{
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+    }
+
+    .chat-card-first-container h3{
+        font-size: 1rem;
+    }
+
+    .chat-card-first-container h4{
+        font-size: 0.9rem;
+    }
 }
