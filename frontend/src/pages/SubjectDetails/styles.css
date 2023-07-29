@@ -83,7 +83,6 @@
     width: 60%;
     align-items: flex-start;
     justify-content: flex-start;
-    z-index: 20;
 }
 
 .subject-details-second-container .tab-content{

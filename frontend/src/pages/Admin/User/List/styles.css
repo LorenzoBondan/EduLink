@@ -83,3 +83,9 @@
         width: 70%;
     }
 }
+
+@media(min-width:1200px){
+    .users-crud-container{
+        height: calc(100vh - 95px);
+    }
+}

@@ -47,6 +47,9 @@ INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Tha
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', true, 11, 4);
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', true, 4, 11);
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Ok, see you soon', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:55:10', true, 11, 4);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello, I have a lot of commitments this month. Can we schedule our conversation for next month?', TIMESTAMP WITHOUT TIME ZONE '2023-07-26T21:11:18', true, 4, 11);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('As soon as possible, please! It''s urgent...', TIMESTAMP WITHOUT TIME ZONE '2023-07-26T22:48:32', true, 11, 4);
+INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Don''t you worry, I will text you', TIMESTAMP WITHOUT TIME ZONE '2023-07-27T07:12:22', false, 4, 11);
 
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Hello teacher, I want to talk with you about my son', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:15:00', true, 12, 4);
 INSERT INTO tb_message (text, moment, read, sender_id, receiver_id) VALUES ('Sure, no problem', TIMESTAMP WITHOUT TIME ZONE '2023-07-24T11:45:22', false, 4, 12);
@@ -125,6 +128,7 @@ INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (1, 3);
 INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (5, 11);
 INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (7, 12);
 INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (8, 13);
+INSERT INTO tb_parent_childen (parent_id, children_id) VALUES (14, 3);
 
 INSERT INTO tb_user_test (user_id, test_id) VALUES (1,1);
 INSERT INTO tb_user_test (user_id, test_id) VALUES (5,2);

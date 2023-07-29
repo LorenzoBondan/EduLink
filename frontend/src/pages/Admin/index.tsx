@@ -9,13 +9,11 @@ function Admin(){
     return(
         <div className="admin-container" style={{display:"flex", justifyContent:"flex-start"}}>
         {hasAnyRoles(["ROLE_ADMIN"])?  (
-            <div className="admin-content">
-                <Switch>
-                    <PrivateRoute path="/admin/users">
-                        <Users/>
-                    </PrivateRoute>
-                </Switch>
-            </div>
+            <Switch>
+                <PrivateRoute path="/admin/users">
+                    <Users/>
+                </PrivateRoute>
+            </Switch>
             ) : (
                 <div className='base-card access-main-container'>
                     <div className="access-text-container" style={{textAlign:"center"}}>
