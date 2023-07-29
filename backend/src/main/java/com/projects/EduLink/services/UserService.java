@@ -76,6 +76,18 @@ public class UserService implements UserDetailsService {
 		Page<User> list = repository.find(name, pageable);
 		return list.map(x -> new UserDTO(x));
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<UserDTO> findStudents(Pageable pageable) {
+		Page<User> list = repository.findStudents(pageable);
+		return list.map(x -> new UserDTO(x));
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<UserDTO> findTeachers(Pageable pageable) {
+		Page<User> list = repository.findTeachers(pageable);
+		return list.map(x -> new UserDTO(x));
+	}
 
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
