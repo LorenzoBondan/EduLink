@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import './styles.css';
-import { Message, SpringPage, User } from 'types';
+import { Message, User } from 'types';
 import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'util/requests';
 
