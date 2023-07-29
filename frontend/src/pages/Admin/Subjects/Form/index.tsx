@@ -83,65 +83,71 @@ const Form = () => {
     return(
         <div className="edit-profile-form-container">
             <div className="base-card post-card-form-card">
-                <h1>Edit Profile</h1>
+                <h1>Add or Edit Subject</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='row post-crud-inputs-container'>
-                        <div className='margin-bottom-30'>
-                            <label htmlFor="">Name</label>
-                            <input 
-                                {...register("name", {
-                                    required: 'Required field',
-                                })}
-                                type="text"
-                                className={`form-control base-input ${errors.name ? 'is-invalid' : ''}`}
-                                placeholder="Name"
-                                name="name"
-                            />
-                            <div className='invalid-feedback d-block'>{errors.name?.message}</div>
-                        </div>
-                        <div className='margin-bottom-30'>
-                            <label htmlFor="">Team</label>
-                            <input 
-                                {...register("team", {
-                                    required: 'Required field',
-                                })}
-                                type="text"
-                                className={`form-control base-input ${errors.team ? 'is-invalid' : ''}`}
-                                placeholder="Team"
-                                name="team"
-                            />
-                            <div className='invalid-feedback d-block'>{errors.name?.message}</div>
-                        </div>
-                        <div className='margin-bottom-30'>
-                            <label htmlFor="">Img Url</label>  
+                        <div className='col-lg-6 subjects-crud-form-column'>
+                            <div className='margin-bottom-30'>
+                                <label htmlFor="">Name</label>
                                 <input 
-                                    {...register("imgUrl", {
+                                    {...register("name", {
                                         required: 'Required field',
-                                    pattern: { 
-                                        value: /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm,
-                                        message: 'Insert a valid URL'
-                                    }
                                     })}
                                     type="text"
-                                    className={`form-control base-input ${errors.imgUrl ? 'is-invalid' : ''}`}
-                                    placeholder="URL of subject's image"
-                                    name="imgUrl"
+                                    className={`form-control base-input ${errors.name ? 'is-invalid' : ''}`}
+                                    placeholder="Name"
+                                    name="name"
                                 />
-                                <div className='invalid-feedback d-block'>{errors.imgUrl?.message}</div>
+                                <div className='invalid-feedback d-block'>{errors.name?.message}</div>
+                            </div>
+                            <div className='margin-bottom-30'>
+                                <label htmlFor="">Team</label>
+                                <input 
+                                    {...register("team", {
+                                        required: 'Required field',
+                                    })}
+                                    type="text"
+                                    className={`form-control base-input ${errors.team ? 'is-invalid' : ''}`}
+                                    placeholder="Team"
+                                    name="team"
+                                />
+                                <div className='invalid-feedback d-block'>{errors.name?.message}</div>
+                            </div>
                         </div>
-                        <div className='margin-bottom-30'>
-                            <label htmlFor="">Teacher Id</label>  
-                            <select
-                                {...register("teacherId", {
-                                    required: 'Required field',
-                                })}
-                                className={`form-control base-input ${errors.teacherId ? 'is-invalid' : ''}`}
-                                placeholder='Teacher' 
-                                name="teacherId"
-                                >
-                                {selectTeacher?.sort((a,b) => a.name > b.name ? 1 : -1).map(teacher => <option key={teacher.id} value={teacher.id} label={teacher.name}></option>)}
-                            </select>
+                        <div className='col-lg-6 subjects-crud-form-column'>
+                            <div className='margin-bottom-30'>
+                                <label htmlFor="">Img Url</label>  
+                                    <input 
+                                        {...register("imgUrl", {
+                                            required: 'Required field',
+                                        pattern: { 
+                                            value: /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm,
+                                            message: 'Insert a valid URL'
+                                        }
+                                        })}
+                                        type="text"
+                                        className={`form-control base-input ${errors.imgUrl ? 'is-invalid' : ''}`}
+                                        placeholder="URL of subject's image"
+                                        name="imgUrl"
+                                    />
+                                    <div className='invalid-feedback d-block'>{errors.imgUrl?.message}</div>
+                            </div>
+                            <div className='margin-bottom-30'>
+                                <label htmlFor="">Teacher Id</label>  
+                                <select
+                                    {...register("teacherId", {
+                                        required: 'Required field',
+                                    })}
+                                    className={`form-control base-input ${errors.teacherId ? 'is-invalid' : ''}`}
+                                    placeholder='Teacher' 
+                                    name="teacherId"
+                                    >
+                                    {selectTeacher?.sort((a,b) => a.name > b.name ? 1 : -1).map(teacher => <option key={teacher.id} value={teacher.id} label={teacher.name}></option>)}
+                                </select>
+                            </div>
                         </div>
+                        
+
                         <div className='margin-bottom-30'>
                             <label htmlFor="">Students</label> 
                                 <Controller 
