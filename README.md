@@ -72,8 +72,6 @@ EduLink is an innovative communication platform that connects schools, parents, 
 - React
 - CSS
 
-Spring Boot v4.15.3 | Node v14.18.2
-
 ## Author
 
 [Lorenzo Bondan](HTTPS://WWW.LINKEDIN.COM/IN/LORENZO-BONDAN-108B42236)
